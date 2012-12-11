@@ -9,7 +9,7 @@
 <body>
 
         <% if current_user %>
-          Logged in as <%= current_user.title %> <%= current_user.name %> <%= current_user.surname %>.
+          Logged in as <%= current_user.title, current_user.name, current_user.surname %>.
           <%= link_to "Log Out", logout_path %>
         <% else %>
           <%= link_to "Sign Up", signup_path %> or
