@@ -1,0 +1,17 @@
+Feature: Sign up
+  In order to get access to the site
+  As a user
+  I want to be able to sign up
+
+ 	Background:
+      		Given I am not logged in
+
+	Scenario: User signs up
+		Given I am on the landing page
+		When I sign up with <title>, <name>, <surname>, <email>, <password>
+		Then I should see a successful sign up message
+
+	Examples:
+	| title		| name		| surname		| email			| password	|	
+	| mgr		| Konrad	| Ziaja			| kob2222@gmail.com	| takiesuper12	|
+
