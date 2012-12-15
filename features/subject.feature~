@@ -1,0 +1,5 @@
+Feature: Subject
+  In order to manage subject
+  As a user
+  I want to add and manage subjects
+
