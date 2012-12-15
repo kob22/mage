@@ -1,0 +1,4 @@
+class Group < ActiveRecord::Base
+  attr_accessible :day, :group, :subject_id, :time, :week
+belongs_to :subject
+end

@@ -1,4 +1,6 @@
 Mag::Application.routes.draw do
+
+
     root :to => "static_pages#home"
 
   get 'signup', to: 'users#new', as: 'signup'
@@ -7,6 +9,12 @@ Mag::Application.routes.draw do
 
   resources :users
   resources :sessions
+
+  resources :groups, :only => :index
+  resources :subjects, :shallow => true do
+  	resources :groups	
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

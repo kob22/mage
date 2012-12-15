@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Subject:</b>
+  <%= @group.subject.subject %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @group.group %>
+</p>
+
+<p>
+  <b>Day:</b>
+  <%= @group.day %>
+</p>
+
+<p>
+  <b>Week:</b>
+  <%= @group.week %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @group.time %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> | 
+<%= link_to 'Back', subject_groups_path(@group.subject) %>
