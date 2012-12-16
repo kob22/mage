@@ -128,8 +128,8 @@ When /^I return to the site$/ do
 end
 
 Then /^I should be signed in$/ do
-  page.should have_content "Logged in as "
-  page.should have_content @visitor[:surname]
+  page.should have_content "Logged in as #{@visitor[:title]} #{@visitor[:name]} #{@visitor[:surname]}"
+
 end
 
 When /^I sign in with wrong email$/ do
@@ -155,6 +155,7 @@ end
 Given /^I am logged in$/ do
   valid_visitor
   sign_in
+log_out
   log_in
 page.should have_content "Logged in!"
 end

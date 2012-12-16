@@ -50,7 +50,7 @@ end
 
 Then /^I should see a successful sign up message$/ do
   page.should have_content "Thank you for signing up!"
-  page.should have_content @visitor[:surname]
+  page.should have_content "Logged in as #{@visitor[:title]} #{@visitor[:name]} #{@visitor[:surname]}"
 end
 
 When /^I sign up with no data$/ do
@@ -128,8 +128,8 @@ When /^I return to the site$/ do
 end
 
 Then /^I should be signed in$/ do
-  page.should have_content "Logged in as "
-  page.should have_content @visitor[:surname]
+  page.should have_content "Logged in as #{@visitor[:title]} #{@visitor[:name]} #{@visitor[:surname]}"
+
 end
 
 When /^I sign in with wrong email$/ do
