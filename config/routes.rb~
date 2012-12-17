@@ -8,10 +8,10 @@ Mag::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :users
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
 
-  resources :groups, :only => :index
-  resources :subjects, :shallow => true do
+  resources :groups, only: [:index]
+  resources :subjects, shallow: => true do
   	resources :groups	
   end
 
