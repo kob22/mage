@@ -1,4 +1,11 @@
 class Group < ActiveRecord::Base
-  attr_accessible :day, :group, :subject_id, :time, :week
+  attr_accessible :day, :group, :time, :week
 belongs_to :subject
+
+  validates :group, presence: true, uniqueness: { case_sensitive: false }
+  validates :day, presence: true
+  validates :week, presence: true
+  validates :time, presence: true
+
+
 end

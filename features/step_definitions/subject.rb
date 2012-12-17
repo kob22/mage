@@ -47,16 +47,7 @@ Then /^I see edited subject on the list$/ do
 end
 
 When /^I delete subject$/ do
-  add_subject("Science")
-  visit subjects_path
-  click_link "Groups"
-  click_link "New"
-  fill_in "group_group", with: "First"
-  fill_in "group_day", with: "Monday"
-  fill_in "group_week", with: "AB"
-  # select default time
-
-  click_button "Create Group"
+  add_group("Science","First","Monday","AB","17:00")
   visit groups_path
   page.should have_content "First"
   visit subjects_path
