@@ -47,7 +47,10 @@ Then /^I see edited subject on the list$/ do
 end
 
 When /^I delete subject$/ do
-  add_subject("Science")
+  visit subjects_path
+  click_link "New Subject"
+  fill_in "subject_subject", with: "Science"
+  click_button "Create Subject"
   visit subjects_path
   click_link "Groups"
   click_link "New"
