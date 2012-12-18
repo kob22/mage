@@ -7,9 +7,9 @@ Mag::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users
+  resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-
+  resources :password_resets, only: [:new, :create]
   resources :groups, only: [:index]
   resources :subjects, shallow:  true do
   	resources :groups	

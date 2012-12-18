@@ -9,7 +9,7 @@ Mag::Application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :groups, only: [:index]
   resources :subjects, shallow:  true do
   	resources :groups	

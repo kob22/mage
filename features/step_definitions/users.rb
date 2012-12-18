@@ -218,23 +218,24 @@ end
 
 When /^I request an email with password reset$/ do
   visit login_path
-  fill_in "user_email", with: @visitor[:email]
   click_link "Reset password"
-
+  fill_in "email", with: @visitor[:email]
+  click_button "Reset Password"
+  page.should have_content "Email sent with password reset instructions."
 end
 
 Then /^I receive an email with password reset link$/ do
-  open_email(address, :with_subject => "Mag Reset Password")
-  current_email.default_part_body.to_s.should include("To reset your password click the URL below.")
-  visit_in_email("Reset password")
+  open_email(@visitor[:email], :with_subject => "Mag Password Reset")
+  current_email.default_part_body.to_s.should include("To reset your password click the URL below or copy to your browser.")
+  visit_in_email("Reset Password Link")
 
 end
 
 Then /^I choose new password$/ do
   fill_in "user_password", :with => "NewPass12"
   fill_in "user_password_confirmation", :with => "NewPass12"
-  click_button "Change password"
-  page.should have_content "Passowrd was successful changed."
+  click_button "Update Password"
+  page.should have_content "Password has been reset."
 end
 
 When /^I should sign in with new password$/ do
