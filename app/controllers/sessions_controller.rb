@@ -6,8 +6,12 @@ skip_before_filter :authorize
   def create
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_url, notice: "Logged in!"
+      if params[:remember_me]
+	cookies[:auth_token] = { value:   user.auth_token, expires: 7.days.from_now.utc }
+      else
+        cookies[:auth_token] = user.auth_token  
+      end
+      redirect_to root_url, :notice => "Logged in!"
     else
       flash.now.alert = "Email or password is invalid"
       render "new"
@@ -15,7 +19,7 @@ skip_before_filter :authorize
   end
   
   def destroy
-    session[:user_id] = nil
-    redirect_to login_url, notice: "Logged out!"
+    cookies.delete(:auth_token)
+    redirect_to login_path, :notice => "Logged out!"
   end
 end

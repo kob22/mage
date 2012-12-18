@@ -33,7 +33,7 @@ Feature: Log in
 
 
 	    Scenario: User signs in successfully with uncheck remember me
-	      When I sign in with valid credentials and check box remember me
+	      When I sign in with valid credentials and uncheck box remember me
 	      Then I should see a successful sign in message
 	      When I close the browser
 	      Then I return to the site

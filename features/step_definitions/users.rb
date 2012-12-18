@@ -193,6 +193,16 @@ When /^I sign in with valid credentials and check box remember me$/ do
   click_button "Log In"
 end
 
+
+When /^I sign in with valid credentials and uncheck box remember me$/ do
+  visit '/'
+  click_link 'Log In'
+  fill_in "email", :with => @visitor[:email]
+  fill_in "password", :with => @visitor[:password]
+  uncheck "remember_me"
+  click_button "Log In"
+end
+
 When /^I close the browser$/ do
   expire_cookies
 end

@@ -11,7 +11,7 @@ Mag::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :groups, only: [:index]
-  resources :subjects, shallow: => true do
+  resources :subjects, shallow:  true do
   	resources :groups	
   end
 

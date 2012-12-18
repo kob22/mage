@@ -44,5 +44,5 @@ Feature: Log in
 	      When I request an email with password reset
 	      Then I receive an email with password reset link
               And I choose new password
-	      When I should log in with new password
+	      When I should sign in with new password
 	      Then I should see a successful sign in message

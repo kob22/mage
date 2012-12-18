@@ -193,6 +193,16 @@ When /^I sign in with valid credentials and check box remember me$/ do
   click_button "Log In"
 end
 
+
+When /^I sign in with valid credentials and uncheck box remember me$/ do
+  visit '/'
+  click_link 'Log In'
+  fill_in "email", :with => @visitor[:email]
+  fill_in "password", :with => @visitor[:password]
+  uncheck "remember_me"
+  click_button "Log In"
+end
+
 When /^I close the browser$/ do
   expire_cookies
 end
@@ -216,6 +226,7 @@ end
 Then /^I receive an email with password reset link$/ do
   open_email(address, :with_subject => "Mag Reset Password")
   current_email.default_part_body.to_s.should include("To reset your password click the URL below.")
+  visit_in_email("Reset password")
 
 end
 
