@@ -47,7 +47,8 @@ Then /^I see edited subject on the list$/ do
 end
 
 When /^I delete subject$/ do
-  add_group("Science","First","Monday","AB","17:00")
+  add_subject("Science")
+  add_group("First","Monday","AB","17:00")
   visit groups_path
   page.should have_content "First"
   visit subjects_path
@@ -56,6 +57,7 @@ end
 
 Then /^I should see a successful subject deleted message$/ do
   page.should have_content "Subject was successfully destroyed."
+  page.should_not have_content "Science"
 end
 
 Then /^I shouldn't see groups who belongs to this subject$/ do

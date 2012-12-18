@@ -84,7 +84,7 @@ class GroupsController < ApplicationController
     @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to groups_url }
+      format.html { redirect_to subject_groups_path(@group.subject_id), notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

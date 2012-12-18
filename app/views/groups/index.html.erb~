@@ -14,11 +14,12 @@
 
 <% @groups.each do |group| %>
   <tr>
-    <td><%= link_to group.subject.subject, group_subject %></td>
+    <td><%= link_to group.subject.subject, group.subject %></td>
     <td><%= group.group %></td>
     <td><%= group.day %></td>
     <td><%= group.week %></td>
     <td><%= group.time %></td>
+    <td><%= link_to 'Students', group_students(group) %></td>
     <td><%= link_to 'Show', group %></td>
     <td><%= link_to 'Edit', edit_group_path(group) %></td>
     <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>

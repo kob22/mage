@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 3, maximum: 50 }
   validates :surname, presence: true, length: { minimum: 3, maximum: 50 }
   validates :password, presence: true, length: { minimum: 5, maximum: 20 }, on: :create
-#  validates :password_confirmation, presence: true
+  validates :password_confirmation, presence: true, on: :create
 
 
   

@@ -11,10 +11,14 @@ Mag::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :groups, only: [:index]
+  resources :students, only: [:index]
   resources :subjects, shallow:  true do
   	resources :groups	
   end
-
+  
+  resources :groups, shallow:  true do
+  	resources :students	
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

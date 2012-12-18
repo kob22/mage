@@ -1,0 +1,11 @@
+<h1>Add students</h1>
+
+<%= form_tag(:controller => "students", :action => "create", :method => "post") do %>
+  <div class="field">
+  <%= label_tag(:list_of_student, "Add students") %> <br />
+  <%= text_area_tag(:list_of_student,nil, :rows => 20, :cols => 40) %>
+  </div>
+  
+<div class="actions"><%= submit_tag("Add students") %></div>
+<% end %>
+

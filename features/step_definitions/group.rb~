@@ -1,5 +1,4 @@
-def add_group(subject_name, group_name, group_day, group_week, group_time)
-  add_subject(subject_name)
+def add_group(group_name, group_day, group_week, group_time)
   visit subjects_path
   click_link "Groups"
   click_link "New"
@@ -14,7 +13,7 @@ end
 
 When /^I add group$/ do
 
-  add_group("Mathematics","First","Friday","AB","17:00")
+  add_group("First","Friday","AB","17:00")
 
 end
 
@@ -31,7 +30,7 @@ end
 
 When /^I add group without data$/ do
 
-  add_group("Mathematics","","","","")
+  add_group("","","","")
 
 end
 
@@ -43,3 +42,58 @@ When /^I should see a error message, that fileds can't be blank$/ do
 #  page.should have_content "Time can't be blank"
 
 end
+
+
+When /^I edit group$/ do
+
+  add_group("First","Friday","AB","17:00")
+  visit subjects_path
+  click_link "Groups"
+  click_link "Edit"
+  fill_in "group_group", with: "Second"
+  fill_in "group_day", with: "Monday"
+  fill_in "group_week", with: "B"
+  # select default time
+  click_button "Update Group"
+
+
+end
+
+
+Then /^I should see a successful group edited message$/ do
+  page.should have_content "Group was successfully updated."
+end
+
+
+Then /^I should see this edited group with valid data on the list$/ do
+  visit subjects_path
+  click_link "Groups"
+  page.should have_content "Second"
+  click_link "Show"
+  page.should have_content "Group: Second"
+  page.should have_content "Day: Monday"
+  page.should have_content "Week: B"
+#  page.should have_content "Time: B"
+
+end
+
+When /^I delete group$/ do
+  add_group("First","Monday","AB","17:00")
+  visit groups_path
+  page.should have_content "First"
+  click_link "Destroy"
+end
+
+Then /^I should see a successful group deleted message$/ do
+  page.should have_content "Group was successfully destroyed."
+end
+
+Then /^I shouldn't see students who belongs to this group$/ do
+  visit groups_path
+  page.should_not have_content "First"
+  visit students_path
+  page.should_not have_content "First Student"
+  page.should_not have_content "Second Student"
+  page.should_not have_content "Third Student"  
+end
+

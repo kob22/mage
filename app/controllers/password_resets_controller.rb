@@ -2,6 +2,10 @@ class PasswordResetsController < ApplicationController
   skip_before_filter :authorize
   def new
 
+  if current_user 
+  redirect_to root_path, :notice => "You are log in"
+  end
+
   end
 
   def create
