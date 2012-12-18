@@ -23,3 +23,26 @@ Feature: Log in
 	      When I sign in with wrong password
 	      Then I see an invalid login message
 	      And I should be signed out
+
+	    Scenario: User signs in successfully with check remember me
+	      When I sign in with valid credentials and check box remember me
+	      Then I should see a successful sign in message
+	      When I close the browser
+	      Then I return to the site
+	      And I should be still log in
+
+
+	    Scenario: User signs in successfully with uncheck remember me
+	      When I sign in with valid credentials and check box remember me
+	      Then I should see a successful sign in message
+	      When I close the browser
+	      Then I return to the site
+	      And I should see log in page
+
+
+	    Scenario: User reset password
+	      When I request an email with password reset
+	      Then I receive an email with password reset link
+              And I choose new password
+	      When I should sign in with new password
+	      Then I should see a successful sign in message

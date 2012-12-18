@@ -33,6 +33,8 @@ group :test do
   gem "cucumber-rails"
   gem "database_cleaner"
   gem "capybara"
+  gem 'email_spec'
+  gem 'show_me_the_cookies'
 end
 
 # To use ActiveModel has_secure_password
