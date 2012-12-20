@@ -1,0 +1,17 @@
+<h1>Presnces</h1>
+
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Presence</th>
+  </tr>
+
+<% @presences.each do |presence| %>
+  <tr>
+    <td><%= presence.student.name %></td>
+    <td><%= presence.presence %></td>
+   </tr>
+<% end %>
+</table>
+
+

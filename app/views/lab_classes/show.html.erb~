@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Subject:</b>
+  <%= @lab_class.subject %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @lab_class.date %>
+</p>
+
+<p>
+  <b>Mark:</b>
+  <%= @lab_class.mark %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @lab_class.note %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @lab_class.group_id %>
+</p>
+   <td><%= link_to 'Check Presence', lab_class_presences_edit_path(@lab_class.id) %></td>
+
+<%= link_to 'Edit', edit_lab_class_path(@lab_class) %> |
+<%= link_to 'Back', lab_classes_path %> | <%= link_to 'Presence', lab_class_presences_path(@lab_class) %>

@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   attr_accessible :day, :group, :time, :week
   belongs_to :subject
   has_many :students, :dependent => :destroy
+  has_many :lab_classes, :dependent => :destroy
 
 
   validates :group, presence: true

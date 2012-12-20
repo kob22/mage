@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
   attr_accessible :name
   belongs_to :group
+  has_many :lab_class
   
   def self.create_from_text(txt)
     txt = txt.split("\n").reject(&:blank?)

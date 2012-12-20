@@ -1,0 +1,11 @@
+class LabClass < ActiveRecord::Base
+  attr_accessible :date, :mark, :note, :subject
+  belongs_to :group
+
+  validates :subject, presence: true
+  validates :date, presence: true  
+    
+
+
+
+end

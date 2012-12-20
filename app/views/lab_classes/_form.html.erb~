@@ -1,0 +1,34 @@
+<%= form_for(@group,@lab_class) do |f| %>
+  <% if @lab_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lab_class.errors.count, "error") %> prohibited this lab_class from being saved:</h2>
+
+      <ul>
+      <% @lab_class.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :mark %><br />
+    <%= f.text_field :mark %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

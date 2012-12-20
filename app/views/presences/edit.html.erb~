@@ -1,0 +1,19 @@
+<%= form_tag check_presence_path :method => :put do %>
+
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Presence</th>
+  </tr>
+      <% @presences.each do |presence| %>
+        <%= fields_for "presences[]", presence do |f| %>
+  <tr>
+    <td><%= f.label presence.student.name %></td>
+    <td><%= f.check_box :presence %></td>
+   </tr>
+        <% end %>
+      <% end %>
+</table>
+  <%= submit_tag "Check presence" %>
+<% end %>
+

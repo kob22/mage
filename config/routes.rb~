@@ -12,12 +12,20 @@ Mag::Application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :groups, only: [:index]
   resources :students, only: [:index]
+  resources :lab_classes, only: [:index]
   resources :subjects, shallow:  true do
   	resources :groups	
   end
   
   resources :groups, shallow:  true do
   	resources :students	
+  end
+
+  resources :lab_classes do
+  	resources :presences, only: [:index]
+        match '/presences/check_presence' => "presences#check_presence", via: 'GET'
+        match '/presences/update_presence' => "presences#update_presence", via: 'POST'
+	
   end
 
   # The priority is based upon order of creation:
