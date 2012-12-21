@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Surname</th>
     <th>Group</th>
     <th>Subject</th>
     <th></th>
@@ -13,6 +14,7 @@
 <% @students.each do |student| %>
   <tr>
     <td><%= student.name %></td>
+    <td><%= student.surname %></td>
     <td><%= link_to student.group.group , student.group %></td>
     <td><%= link_to student.group.subject.subject , student.group.subject %></td>
     <td><%= link_to 'Show', student %></td>

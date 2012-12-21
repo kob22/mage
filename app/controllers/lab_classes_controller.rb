@@ -48,8 +48,8 @@ class LabClassesController < ApplicationController
 
     respond_to do |format|
       if @lab_class.save
- @students = LabClass.find(@lab_class.id).group.students.all
- Presence.create_presence(@students,@lab_class.id)
+
+
         format.html { redirect_to @lab_class, notice: 'Lab class was successfully created.' }
         format.json { render json: @lab_class, status: :created, location: @lab_class }
       else

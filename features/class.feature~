@@ -15,6 +15,18 @@ Feature: Class
 	  Then I should see a successful class added message
 	  And I see this class on the list
 
+	Scenario: User edit class
+	  Given I added class
+          When I edit class
+	  Then I should see a successful class editet message
+	  And I see edit class on the list
+
+	Scenario: User delete class
+	  Given I added class
+          When I destroy class
+	  Then I shouldn't see class on the list and data.
+
+
 	Scenario: User add note about class
 	  Given I added class
 	  When I add note and I add mark
@@ -31,3 +43,11 @@ Feature: Class
           And I choose student
           When I add note about student on class
 	  Then I should see this note on students page
+
+	Scenario: User give a mark student on class
+	  Given I added class
+          And I choose student
+          When I give a mark student on class
+	  Then I should see mark on student's page
+
+

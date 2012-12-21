@@ -39,15 +39,23 @@ class StudentsController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    if n = @group.students.create_from_text(params[:list_of_student])
-
+    n = @group.students.create_from_text(params[:list_of_student])
+    if n[1]>0
+     if n[0]==n[1]
+     @notice = "Added #{n[1]} students"
+     else 
+     @mis = n[0]-n[1]
+     @notice = "Added #{n[1]} students, #{@mis} lines were ignored"
+     end
      respond_to do |format|
-       format.html { redirect_to group_students_path(params[:group_id]), notice: "Added #{n} students" }
+       format.html { redirect_to group_students_path(params[:group_id]), notice: @notice }
        format.json { render json: group_students_path(params[:group_id]), status: :created, location: group_students_path(params[:group_id]) }
      end
 
     else
-    	render :new
+	flash[:notice] = 'Did not add students'        
+	render action: "new"
+
     end
   end
 

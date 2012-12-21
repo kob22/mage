@@ -8,7 +8,7 @@ Feature: Class
 	  Given I am logged in
           And I add subject
 	  And I add group
-	  And I add students to group
+	  And I add group of students
 
 	Scenario: User add class
 	  When I add class

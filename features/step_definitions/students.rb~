@@ -3,11 +3,7 @@ def add_students
   click_link "Groups"
   click_link "Students"
   click_link "New Student"
-  fill_in "list_of_student", with: "First Student
-
-Second Student
-              
-Third Student"
+  fill_in "list_of_student", with: "First Student\r\n\r\nSecond Student\r\n\r\nThird Student"
   click_button "Add students"
 end
 
@@ -28,7 +24,7 @@ end
 Then /^I edit student$/ do
   add_students
   click_link "Edit"
-  fill_in "name", with: "fourth student"
+  fill_in "student_name", with: "fourth student"
   click_button "Update Student"
 end
 
