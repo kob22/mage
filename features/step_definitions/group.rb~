@@ -70,12 +70,12 @@ Then /^I should see this edited group with valid data on the list$/ do
   click_link "Groups"
   page.should have_content "Second"
   click_link "Show"
-  page.should have_content '<th valign="top">Group name</th>'
-  page.should have_content '<td>Second</td>'
-  page.should have_content '<th valign="top">Day</th>'
-  page.should have_content '<td>Monday</td>'
-  page.should have_content '<th valign="top">Week</th>'
-  page.should have_content '<td>B</td>'
+  page.should have_content 'Group name'
+  page.should have_content 'Second'
+  page.should have_content 'Day'
+  page.should have_content 'Monday'
+  page.should have_content 'Week'
+  page.should have_content 'B'
 #  page.should have_content "Time: B"
 
 end
@@ -99,5 +99,9 @@ Then /^I shouldn't see students who belongs to this group$/ do
   page.should_not have_content "First Student"
   page.should_not have_content "Second Student"
   page.should_not have_content "Third Student"  
+end
+
+Given /^I added subject$/ do
+	FactoryGirl.create(:subject)
 end
 

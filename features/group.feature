@@ -6,7 +6,7 @@ Feature: Group
 
 	Background:
 	  Given I am logged in
-          And I add subject
+          And I added subject
 
 	Scenario: User add group
 	  When I add group

@@ -46,8 +46,8 @@ end
 def log_in
 visit '/'
 click_link 'Log In'
-fill_in "email", :with => @visitor[:email]
-fill_in "password", :with => @visitor[:password]
+fill_in "email", :with => @user.email
+fill_in "password", :with => @user.password
 click_button "Log In"
 end
 
@@ -119,20 +119,18 @@ end
 
 
 Given /^I signed up$/ do
-  valid_visitor
-  sign_up
+ @user=FactoryGirl.create(:user)
 end
 
 Given /^I am not logged$/ do
   log_out
 end
 
-When /^I sign in with valid credentials$/ do
-  valid_visitor
+When /^I log in with valid credentials$/ do
   log_in
 end
 
-Then /^I should see a successful sign in message$/ do
+Then /^I should see a successful log in message$/ do
   page.should have_content "Logged in!"
 end
 
@@ -140,41 +138,43 @@ When /^I return to the site$/ do
   visit '/'
 end
 
-Then /^I should be signed in$/ do
-  page.should have_content "Logged in as #{@visitor[:title]} #{@visitor[:name]} #{@visitor[:surname]}"
+Then /^I should be logged in$/ do
+  page.should have_content "Logged in as #{@user.title} #{@user.name} #{@user.surname}"
 
 end
 
-When /^I sign in with wrong email$/ do
-    valid_visitor
-@visitor = @visitor.merge(:email => "kob222@gmailcom")
+When /^I log in with wrong email$/ do
+
+  @user.email ="kob222@gmailcom"
   log_in
 end
 
-Then /^I see an invalid login message$/ do
+Then /^I see an invalid log in message$/ do
   page.should have_content "Email or password is invalid"
 end
 
-Then /^I should be signed out$/ do
+Then /^I should be logged out$/ do
   page.should have_content "Sign Up"
   page.should have_content "Log In"
 end
 
-When /^I sign in with wrong password$/ do
-      valid_visitor
-@visitor = @visitor.merge(:password => "asffdbd234")
+When /^I log in with wrong password$/ do
+@user.password = "asffdbd234"
   log_in
+end
+
+Given /^I am log in$/ do
+  log_in
+  page.should have_content "Logged in as #{@user.title} #{@user.name} #{@user.surname}"
 end
 
 Given /^I am logged in$/ do
-  valid_visitor
-  sign_up
-log_out
+  @user=FactoryGirl.create(:user)
   log_in
-page.should have_content "Logged in!"
+  page.should have_content "Logged in as #{@user.title} #{@user.name} #{@user.surname}"
 end
 
-When /^I sign out$/ do
+When /^I log out$/ do
   visit '/'
   click_link 'Log Out'
 end
@@ -185,21 +185,21 @@ end
 
 
 
-When /^I sign in with valid credentials and check box remember me$/ do
+When /^I log in with valid credentials and check box remember me$/ do
   visit '/'
   click_link 'Log In'
-  fill_in "email", :with => @visitor[:email]
-  fill_in "password", :with => @visitor[:password]
+  fill_in "email", with: @user.email
+  fill_in "password", with: @user.password
   check "remember_me"
   click_button "Log In"
 end
 
 
-When /^I sign in with valid credentials and uncheck box remember me$/ do
+When /^I log in with valid credentials and uncheck box remember me$/ do
   visit '/'
   click_link 'Log In'
-  fill_in "email", :with => @visitor[:email]
-  fill_in "password", :with => @visitor[:password]
+  fill_in "email", with: @user.email
+  fill_in "password", with: @user.password
   uncheck "remember_me"
   click_button "Log In"
 end
@@ -209,7 +209,7 @@ When /^I close the browser$/ do
 end
 
 Then /^I should be still log in$/ do
-  page.should have_content "Logged in as #{@visitor[:title]} #{@visitor[:name]} #{@visitor[:surname]}"
+  page.should have_content "Logged in as #{@user.title} #{@user.name} #{@user.surname}"
 end
 
 Then /^I should see log in page$/ do
@@ -220,13 +220,13 @@ end
 When /^I request an email with password reset$/ do
   visit login_path
   click_link "Reset password"
-  fill_in "email", with: @visitor[:email]
+  fill_in "email", with:  @user.email
   click_button "Reset Password"
   page.should have_content "Email sent with password reset instructions."
 end
 
 Then /^I receive an email with password reset link$/ do
-  open_email(@visitor[:email], :with_subject => "Mag Password Reset")
+  open_email(@user.email, :with_subject => "Mag Password Reset")
   current_email.default_part_body.to_s.should include("To reset your password click the URL below or copy to your browser.")
   visit_in_email("Reset Password Link")
 
@@ -239,10 +239,10 @@ Then /^I choose new password$/ do
   page.should have_content "Password has been reset."
 end
 
-When /^I should sign in with new password$/ do
+When /^I should log in with new password$/ do
   visit '/'
   click_link 'Log In'
-  fill_in "email", :with => @visitor[:email]
+  fill_in "email", :with => @user.email
   fill_in "password", :with => "NewPass12"
   check "remember_me"
   click_button "Log In"

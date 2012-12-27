@@ -101,3 +101,7 @@ Then /^I shouldn't see students who belongs to this group$/ do
   page.should_not have_content "Third Student"  
 end
 
+Given /^I added subject$/ do
+  subject=FactoryGirl.create(:subject)
+end
+

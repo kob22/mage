@@ -35,6 +35,8 @@ group :test do
   gem "capybara"
   gem 'email_spec'
   gem 'show_me_the_cookies'
+  gem 'factory_girl'
+
 end
 
 # To use ActiveModel has_secure_password

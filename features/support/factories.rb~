@@ -1,0 +1,18 @@
+require 'factory_girl'
+
+FactoryGirl.define do
+
+  factory :user do
+    title			"mgr"
+    name			"Jan"
+    surname			"Kowalski"
+    email			"kob2222@gmail.com"
+    password			"12345"
+    password_confirmation	"12345"	
+  end
+
+  factory :subject do
+    subject "Science"
+  end
+
+end
