@@ -7,18 +7,16 @@ class Student < ActiveRecord::Base
   validates :surname, presence: true
   
   def self.create_from_text(txt)
-    txt = txt.split("\r\n").reject(&:blank?)
-    n=0
+   txts=[]
     self.transaction do
-      txt.map! do |human|
-        human = human.split(" ")
-        student = new(name: human[0] , surname: human[1])
-        if student.save 
-	n+=1
-	end
-     end
+  	txts = txt.split("\r\n").select(&:present?).map do |human|
+    	name, surname = human.split(' ')
+    	new(name: name, surname: surname).save
+        end
     end
-    [txt.length,n]
+    [txts.count(true), txts.count(false)]
   end
 
 end
+
+

@@ -1,6 +1,9 @@
 Mag::Application.routes.draw do
 
 
+  resources :lab_marks
+
+
     root :to => "static_pages#home"
 
   get 'signup', to: 'users#new', as: 'signup'
@@ -19,7 +22,8 @@ Mag::Application.routes.draw do
   
   resources :groups, shallow:  true do
   	resources :students	
-  	resources :lab_classes 
+  	resources :lab_classes
+        match '/presences/' => "presences#group_presence", via: 'GET'
   end
 
   resources :lab_classes do

@@ -39,14 +39,12 @@ class StudentsController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    n = @group.students.create_from_text(params[:list_of_student])
-
-    if n[1]>0
-     if n[0]==n[1]
-     @notice = "Added #{n[1]} students #{n[0]}"
+    saved, missed = @group.students.create_from_text(params[:list_of_student])
+    if saved>0
+     if missed = 0
+     @notice = "Added #{saved} students"
      else 
-
-     @notice = "Added #{n[1]} students, #{n[0]} lines were ignored"
+     @notice = "Added #{saved} students, #{missed} lines were ignored"
      end
      respond_to do |format|
        format.html { redirect_to group_students_path(params[:group_id]), notice: @notice }

@@ -70,9 +70,12 @@ Then /^I should see this edited group with valid data on the list$/ do
   click_link "Groups"
   page.should have_content "Second"
   click_link "Show"
-  page.should have_content "Group: Second"
-  page.should have_content "Day: Monday"
-  page.should have_content "Week: B"
+  page.should have_content 'Group name'
+  page.should have_content 'Second'
+  page.should have_content 'Day'
+  page.should have_content 'Monday'
+  page.should have_content 'Week'
+  page.should have_content 'B'
 #  page.should have_content "Time: B"
 
 end

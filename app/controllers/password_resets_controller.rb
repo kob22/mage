@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
   skip_before_filter :authorize
+  layout "sessions"
   def new
 
   if current_user 
@@ -17,6 +18,9 @@ class PasswordResetsController < ApplicationController
 
   def edit
     @user = User.find_by_password_reset_token!(params[:id])
+
+	rescue ActiveRecord::RecordNotFound => error 
+      redirect_to new_password_reset_path, :alert => "Please generate reset link again"
   end
 
 
@@ -24,12 +28,15 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_password_reset_token!(params[:id])
     if @user.password_reset_sent_at < 24.hours.ago
       redirect_to new_password_reset_path, :alert => "Password reset link has expired."
-    elsif @user.update_attributes(params[:user])
-      redirect_to login_path, :notice => "Password has been reset."
-    else
-      render :edit
     end
-  end
 
+      if @user.update_attributes(params[:user])
+	redirect_to login_path, :notice => "Password has been reset."
+      else
+        render :edit
+      end
+
+
+  end
 
 end

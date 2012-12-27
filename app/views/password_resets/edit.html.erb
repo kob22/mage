@@ -1,23 +1,46 @@
-<h1>Reset Password</h1>
+<% provide(:title, 'Reset Password') %>
+	<!-- start logo -->
 
+	<!-- end logo -->
+	
+	<div class="clear"></div>
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit "Update Password" %></div>
-<% end %>
+		<% if @user.errors.any? %>
+	
+			<!--  start message-red -->
+			<div id="message">
+			<% for message in @user.errors.full_messages %>
+			<div id="message-error"><%= message %></div>
+
+			<% end %>
+			</div>
+			<!--  end message-red -->
+	
+		<% end %>
+	<!--  start loginbox ................................................................................. -->
+	<div id="signinbox">
+
+	<!--  start login-inner -->
+	<div id="login-inner">
+		<div id="login-text"><%= yield(:title) %></div>
+
+		<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<th><%= f.label :password %></th>
+			<td><%= f.password_field :password, class: "login-inp" %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :password_confirmation %></th>
+			<td><%= f.password_field :password_confirmation, class: "login-inp" %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= f.submit "Update Password", class: "submit-login"  %></td>
+		</tr>
+		</table>
+		<% end %>
+	</div>
+ 	<!--  end login-inner -->
+	<div class="clear"></div>
+ </div>
+ <!--  end loginbox -->

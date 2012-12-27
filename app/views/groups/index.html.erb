@@ -1,35 +1,81 @@
-<h1>Listing groups</h1>
+<% provide(:title, 'Groups') %>
+	<!--  start page-heading -->
+	<div id="page-heading">
+		<h1>Listing groups</h1>
+					<% unless params[:subject_id]==nil %>
+						<h1><%= link_to 'New', new_subject_group_path %></h1>
+					<% end %>
+	</div>
+	<!-- end page-heading -->
 
-<table>
-  <tr>
-    <th>Subject</th>
-    <th>Group</th>
-    <th>Day</th>
-    <th>Week</th>
-    <th>Time</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+	<tr>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th class="topleft"></th>
+		<td id="tbl-border-top">&nbsp;</td>
+		<th class="topright"></th>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+	</tr>
+	<tr>
+		<td id="tbl-border-left"></td>
+		<td>
+		<!--  start content-table-inner ...................................................................... START -->
+		<div id="content-table-inner">
+		
+			<!--  start table-content  -->
+			<div id="table-content">
+	
+		 
+				<!--  start product-table ..................................................................................... -->
+				<form id="mainform" action="">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+				<tr>
+						<th class="table-header-repeat line-left minwidth-1"><a href="">Subject Name</a>	</th>
+						<th class="table-header-repeat line-left"><a href="">Group Name</a></th>
+						<th class="table-header-repeat line-left"><a href="">Day</a></th>
+						<th class="table-header-repeat line-left"><a href="">Week</a></th>
+						<th class="table-header-repeat line-left"><a href="">Time</a></th>
+					<th class="table-header-options line-left"><a href="">Options</a></th>
+				</tr>
+				<% @groups.each do |group| %>
+				<tr>
+				    <td><%= link_to group.subject.subject, group.subject %></td>
+				    <td><%= group.group %></td>
+				    <td><%= group.day %></td>
+				    <td><%= group.week %></td>
+				    <td><%= group.time %></td>		
+				    <td class="options-width">
+					<%= link_to 'Show', group %>
+					<%= link_to 'Edit', edit_group_path(group) %>
+					<%= link_to 'Classes', group_lab_classes_path(group) %>
+					<%= link_to 'Students', group_students_path(group) %>
+					<%= link_to 'Presence', group_group_presences_path(group) %>
+					<%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= link_to group.subject.subject, group.subject %></td>
-    <td><%= group.group %></td>
-    <td><%= group.day %></td>
-    <td><%= group.week %></td>
-    <td><%= group.time %></td>
-    <td><%= link_to 'Classes', group_lab_classes_path(group) %></td>
-    <td><%= link_to 'Students', group_students_path(group) %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+					</td>
+				</tr>
+				<% end %>
 
-<br />
-<% unless params[:subject_id]==nil %>
- <td><%= link_to 'New', new_subject_group_path %></td>
-<% end %>
+				</table>
+				<!--  end product-table................................... --> 
+				</form>
+			</div>
+			<!--  end content-table  -->
+		
+
+
+			
+			<div class="clear"></div>
+		 
+		</div>
+		<!--  end content-table-inner ............................................END  -->
+		</td>
+		<td id="tbl-border-right"></td>
+	</tr>
+	<tr>
+		<th class="sized bottomleft"></th>
+		<td id="tbl-border-bottom">&nbsp;</td>
+		<th class="sized bottomright"></th>
+	</tr>
+	</table>
+	<div class="clear">&nbsp;</div>

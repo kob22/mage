@@ -156,7 +156,8 @@ Then /^I see an invalid login message$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign Up or Log In"
+  page.should have_content "Sign Up"
+  page.should have_content "Log In"
 end
 
 When /^I sign in with wrong password$/ do

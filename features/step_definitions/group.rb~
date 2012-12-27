@@ -70,9 +70,12 @@ Then /^I should see this edited group with valid data on the list$/ do
   click_link "Groups"
   page.should have_content "Second"
   click_link "Show"
-  page.should have_content "Group: Second"
-  page.should have_content "Day: Monday"
-  page.should have_content "Week: B"
+  page.should have_content '<th valign="top">Group name</th>'
+  page.should have_content '<td>Second</td>'
+  page.should have_content '<th valign="top">Day</th>'
+  page.should have_content '<td>Monday</td>'
+  page.should have_content '<th valign="top">Week</th>'
+  page.should have_content '<td>B</td>'
 #  page.should have_content "Time: B"
 
 end
@@ -86,6 +89,7 @@ end
 
 Then /^I should see a successful group deleted message$/ do
   page.should have_content "Group was successfully destroyed."
+  page.should_not have_content "First"
 end
 
 Then /^I shouldn't see students who belongs to this group$/ do

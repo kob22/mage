@@ -1,13 +1,88 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'Show Subject') %>
+	<!--  start page-heading -->
+	<div id="page-heading">
+		<h1>Show Subject</h1>
+	</div>
+	<!-- end page-heading -->
 
-<p>
-  <b>Subject:</b>
-  <%= @subject.subject %>
-</p>
+	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+	<tr>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th class="topleft"></th>
+		<td id="tbl-border-top">&nbsp;</td>
+		<th class="topright"></th>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+	</tr>
+	<tr>
+		<td id="tbl-border-left"></td>
+		<td>
+		<!--  start content-table-inner ...................................................................... START -->
+		<div id="content-table-inner">
+		
+			<!--  start table-content  -->
+			<div id="table-content">
+	
+		 
+				<!--  start product-table ..................................................................................... -->
+					<table border="0" width="100%" height="240px" cellpadding="0" cellspacing="0">
+					<tr valign="top">
+					<td>
+	
+
+	
+						<!-- start id-form -->
+						<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+						<tr>
+							<th valign="top">Subject name</th>
+							<td><%= @subject.subject  %></td>
+							<td></td>
+						</tr>
+
+						<td></td>
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						<td valign="top">
+							<%= link_to 'Edit', edit_subject_path(@subject) %> | 
+							<%= link_to 'Destroy', @subject, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+							<%= link_to 'Groups', subject_groups_path(@subject) %> 
+						</td>
+						<td></td>
+					</tr>
+					</table>
+					<!-- end id-form  -->
+
+					</td>
+					<td>
 
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> | 
-<%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %> | 
-<%= link_to 'Groups', subject_groups_path(@subject) %></td> | 
 
-<%= link_to 'Back', subjects_path %>
+				</td>
+				</tr>
+				<tr>
+				<td><img src="/assets/shared/blank.gif" width="695" height="1" alt="blank" /></td>
+				<td></td>
+				</tr>
+				</table>
+				<!--  end product-table................................... --> 
+
+			</div>
+			<!--  end content-table  -->
+		
+
+
+			
+			<div class="clear"></div>
+		 
+		</div>
+		<!--  end content-table-inner ............................................END  -->
+		</td>
+		<td id="tbl-border-right"></td>
+	</tr>
+	<tr>
+		<th class="sized bottomleft"></th>
+		<td id="tbl-border-bottom">&nbsp;</td>
+		<th class="sized bottomright"></th>
+	</tr>
+	</table>
+	<div class="clear">&nbsp;</div>

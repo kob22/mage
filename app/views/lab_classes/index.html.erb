@@ -1,37 +1,79 @@
-<h1>Listing lab_classes</h1>
+<% provide(:title, 'Lab Classes') %>
+	<!--  start page-heading -->
+	<div id="page-heading">
+		<h1>Listing lab classes</h1>
+					<% unless params[:group_id]==nil %>
+						<h1><%= link_to 'New Lab class', new_group_lab_class_path %></h1>
+					<% end %>
+	</div>
+	<!-- end page-heading -->
 
-<table>
-  <tr>
-    <th>Group</th>
-    <th>Subject</th>
-    <th>Date</th>
-    <th>Mark</th>
-    <th>Note</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+	<tr>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th class="topleft"></th>
+		<td id="tbl-border-top">&nbsp;</td>
+		<th class="topright"></th>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+	</tr>
+	<tr>
+		<td id="tbl-border-left"></td>
+		<td>
+		<!--  start content-table-inner ...................................................................... START -->
+		<div id="content-table-inner">
+		
+			<!--  start table-content  -->
+			<div id="table-content">
+	
+		 
+				<!--  start product-table ..................................................................................... -->
+				<form id="mainform" action="">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+				<tr>
+						<th class="table-header-repeat line-left minwidth-1"><a href="">Group Name</a>	</th>
+						<th class="table-header-repeat line-left"><a href="">Subject</a></th>
+						<th class="table-header-repeat line-left"><a href="">Date</a></th>
+						<th class="table-header-repeat line-left"><a href="">Note</a></th>
+						<th class="table-header-options line-left"><a href="">Options</a></th>
+				</tr>
+				<% @lab_classes.each do |lab_class| %>
+				<tr>
+				    <td><%= link_to lab_class.group.group, lab_class.group %></td>
+				    <td><%= lab_class.subject %></td>
+				    <td><%= lab_class.date %></td>
+				    <td><%= lab_class.note %></td>
+				    <td class="options-width">
+					<%= link_to 'Show', lab_class %>
+					<%= link_to 'Edit', edit_lab_class_path(lab_class) %>
+					<%= link_to 'Students', group_students_path(lab_class.group) %>
+					<%= link_to 'Presence', lab_class_presences_path(lab_class) %>
+					<%= link_to 'Check Presence', lab_class_presences_check_presence_path(lab_class) %>
+					<%= link_to 'Destroy', lab_class, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<% @lab_classes.each do |lab_class| %>
-  <tr>
-    <td><%= link_to lab_class.group.group, lab_class.group %></td>
-    <td><%= lab_class.subject %></td>
-    <td><%= lab_class.date %></td>
-    <td><%= lab_class.mark %></td>
-    <td><%= lab_class.note %></td>
-    <td><%= link_to 'Presence', lab_class_presences_path(lab_class) %></td>
-    <td><%= link_to 'Check Presence', lab_class_presences_check_presence_path(lab_class) %></td>
-    <td><%= link_to 'Show', lab_class %></td>
-    <td><%= link_to 'Edit', edit_lab_class_path(lab_class) %></td>
-    <td><%= link_to 'Destroy', lab_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+					</td>
+				</tr>
+				<% end %>
 
-<br />
+				</table>
+				<!--  end product-table................................... --> 
+				</form>
+			</div>
+			<!--  end content-table  -->
+		
 
-<% unless params[:group_id]==nil %>
- <td><%= link_to 'New Lab class', new_group_lab_class_path %></td>
-<% end %>
+
+			
+			<div class="clear"></div>
+		 
+		</div>
+		<!--  end content-table-inner ............................................END  -->
+		</td>
+		<td id="tbl-border-right"></td>
+	</tr>
+	<tr>
+		<th class="sized bottomleft"></th>
+		<td id="tbl-border-bottom">&nbsp;</td>
+		<th class="sized bottomright"></th>
+	</tr>
+	</table>
+	<div class="clear">&nbsp;</div>

@@ -1,30 +1,110 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'Show Group') %>
+	<!--  start page-heading -->
+	<div id="page-heading">
+		<h1>Show Group</h1>
+	</div>
+	<!-- end page-heading -->
 
-<p>
-  <b>Subject:</b>
-  <%= @group.subject.subject %>
-</p>
+	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+	<tr>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th class="topleft"></th>
+		<td id="tbl-border-top">&nbsp;</td>
+		<th class="topright"></th>
+		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+	</tr>
+	<tr>
+		<td id="tbl-border-left"></td>
+		<td>
+		<!--  start content-table-inner ...................................................................... START -->
+		<div id="content-table-inner">
+		
+			<!--  start table-content  -->
+			<div id="table-content">
+	
+		 
+				<!--  start product-table ..................................................................................... -->
+					<table border="0" width="100%" height="240px" cellpadding="0" cellspacing="0">
+					<tr valign="top">
+					<td>
+	
 
-<p>
-  <b>Group:</b>
-  <%= @group.group %>
-</p>
+	
+						<!-- start id-form -->
+						<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+						<tr>
+							<th valign="top">Subject name</th>
+							<td><%= link_to @group.subject.subject, @group.subject %></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th valign="top">Group name</th>
+							<td><%= @group.group %></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th valign="top">Day</th>
+							<td><%= @group.day  %></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th valign="top">Week</th>
+							<td><%= @group.week  %></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th valign="top">Time</th>
+							<td><%= @group.time  %></td>
+							<td></td>
+						</tr>
 
-<p>
-  <b>Day:</b>
-  <%= @group.day %>
-</p>
+						<td></td>
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						<td valign="top">
+							<%= link_to 'Edit', edit_group_path(@group) %> | 
+							<%= link_to 'Classes', group_lab_classes_path(@group) %> | 
+							<%= link_to 'Students', group_students_path(@group) %> | 
+							<%= link_to 'Presence', group_group_presences_path(@group) %> | 
+							<%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
+						</td>
+						<td></td>
+					</tr>
+					</table>
+					<!-- end id-form  -->
 
-<p>
-  <b>Week:</b>
-  <%= @group.week %>
-</p>
-
-<p>
-  <b>Time:</b>
-  <%= @group.time %>
-</p>
+					</td>
+					<td>
 
 
-<%= link_to 'Edit', edit_group_path(@group) %> | 
-<%= link_to 'Back', @group.subject.groups %>
+
+				</td>
+				</tr>
+				<tr>
+				<td><img src="/assets/shared/blank.gif" width="695" height="1" alt="blank" /></td>
+				<td></td>
+				</tr>
+				</table>
+				<!--  end product-table................................... --> 
+
+			</div>
+			<!--  end content-table  -->
+		
+
+
+			
+			<div class="clear"></div>
+		 
+		</div>
+		<!--  end content-table-inner ............................................END  -->
+		</td>
+		<td id="tbl-border-right"></td>
+	</tr>
+	<tr>
+		<th class="sized bottomleft"></th>
+		<td id="tbl-border-bottom">&nbsp;</td>
+		<th class="sized bottomright"></th>
+	</tr>
+	</table>
+	<div class="clear">&nbsp;</div>

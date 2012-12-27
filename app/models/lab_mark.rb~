@@ -1,0 +1,3 @@
+class LabMark < ActiveRecord::Base
+  attr_accessible :description, :mark, :presence_id
+end

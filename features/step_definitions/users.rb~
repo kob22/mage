@@ -156,7 +156,8 @@ Then /^I see an invalid login message$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign Up or Log In"
+  page.should have_content "Sign Up"
+  page.should have_content "Log In"
 end
 
 When /^I sign in with wrong password$/ do
@@ -235,7 +236,7 @@ Then /^I choose new password$/ do
   fill_in "user_password", :with => "NewPass12"
   fill_in "user_password_confirmation", :with => "NewPass12"
   click_button "Update Password"
-  page.should have_content "Passowrd was successful changed."
+  page.should have_content "Password has been reset."
 end
 
 When /^I should sign in with new password$/ do

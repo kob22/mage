@@ -1,0 +1,24 @@
+	<!--  start forgotbox ................................................................................... -->
+	<div id="forgotbox">
+		<div id="login-text"><%= yield(:title) %></div>
+		<div id="forgotbox-text">Please send us your email and we'll reset your password.</div>
+		<!--  start forgot-inner -->
+		<div id="forgot-inner">
+		<%= form_tag password_resets_path, :method => :post do %>
+		<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<th><%= label_tag :email %></th>
+			<td><%= text_field_tag :email, params[:email], class: "login-inp" %></td>
+		</tr>
+		<tr>
+			<th> </th>
+			<td><%= submit_tag "Reset Password", class: "submit-login"  %></td>
+		</tr>
+		</table>
+		<% end %>
+		</div>
+		<!--  end forgot-inner -->
+		<div class="clear"></div>
+		<%= link_to "Back to Login", login_path, class: "back-login" %>
+	</div>
+	<!--  end forgotbox -->
