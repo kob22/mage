@@ -4,15 +4,44 @@ FactoryGirl.define do
 
   factory :user do
     title			"mgr"
-    name			"Jan"
-    surname			"Kowalski"
-    email			"kob2222@gmail.com"
-    password			"12345"
-    password_confirmation	"12345"	
+    name			"Jasfan"
+    surname			"Kowasfaalski"
+    email			"kobasfa2222@gmail.com"
+    password			"apkabca123"
+    password_confirmation	"apkabca123"	
+  end
+
+ factory :blank_user, class: User do
+    title			""
+    name			""
+    surname			""
+    email			""
+    password			""
+    password_confirmation	""	
   end
 
   factory :subject do
     subject "Science"
   end
+
+  factory :student do
+   group
+   name				Faker::Name.first_name
+   surname			Faker::Name.last_name
+  end
+
+
+  factory :group do
+    group			"Last"
+    day				"Monday"
+    week			"A32B"
+    time			"1a7:00"
+    subject
+
+  end
+
+
+
+
 
 end

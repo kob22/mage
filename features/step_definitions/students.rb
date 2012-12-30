@@ -22,7 +22,9 @@ Then /^I see this students on the list$/ do
 end
 
 Then /^I edit student$/ do
-  add_students
+
+  @students = FactoryGirl.create_list(:student, 1, group: @group)
+  visit students_path
   click_link "Edit"
   fill_in "student_name", with: "fourth student"
   click_button "Update Student"
@@ -33,11 +35,16 @@ Then /^I should see edited student on the list$/ do
 end
 
 When /^I destroy students$/ do
-  add_students
+  @students = FactoryGirl.create_list(:student, 1, group: @group)
+  visit students_path
   click_link "Destroy"
   page.should have_content "Student was successfully destroyed."
 end
 
 Then /^I shouldn't see this student on the list$/ do
-  page.should_not have_content "First Student"
+  @students.each do |student|
+  
+  page.should_not have_content student.name
+  page.should_not have_content student.surname
+  end
 end

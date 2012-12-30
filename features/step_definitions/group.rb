@@ -46,7 +46,7 @@ end
 
 When /^I edit group$/ do
 
-  add_group("First","Friday","AB","17:00")
+  @group=FactoryGirl.create(:group, subject: @subject)
   visit subjects_path
   click_link "Groups"
   click_link "Edit"
@@ -81,27 +81,39 @@ Then /^I should see this edited group with valid data on the list$/ do
 end
 
 When /^I delete group$/ do
-  add_group("First","Monday","AB","17:00")
+  @group=FactoryGirl.create(:group)
+  @students = FactoryGirl.create_list(:student, 10, group: @group)
   visit groups_path
-  page.should have_content "First"
+  page.should have_content @group.group
+  click_link "Students"
+  @students.each do |student|
+  
+  page.should have_content student.name
+  page.should have_content student.surname
+  end
+  visit groups_path
   click_link "Destroy"
 end
 
 Then /^I should see a successful group deleted message$/ do
   page.should have_content "Group was successfully destroyed."
-  page.should_not have_content "First"
+  page.should_not have_content @group.group
 end
 
 Then /^I shouldn't see students who belongs to this group$/ do
   visit groups_path
-  page.should_not have_content "First"
+  page.should_not have_content @group.group
   visit students_path
-  page.should_not have_content "First Student"
-  page.should_not have_content "Second Student"
-  page.should_not have_content "Third Student"  
+  @students.each do |student|
+  
+  page.should_not have_content student.name
+  page.should_not have_content student.surname
+  end
 end
 
-Given /^I added subject$/ do
-  subject=FactoryGirl.create(:subject)
+Given /^I added group$/ do
+  @group=FactoryGirl.create(:group)
 end
+
+
 

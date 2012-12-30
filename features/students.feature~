@@ -19,4 +19,4 @@ Feature: Students
 
 	Scenario: User destroy student
 	  When I destroy students 
-	  Then I should see this student on the list
+	  Then I shouldn't see this student on the list

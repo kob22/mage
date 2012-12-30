@@ -36,7 +36,7 @@ group :test do
   gem 'email_spec'
   gem 'show_me_the_cookies'
   gem 'factory_girl'
-
+  gem 'faker'
 end
 
 # To use ActiveModel has_secure_password

@@ -11,8 +11,37 @@ FactoryGirl.define do
     password_confirmation	"apka123"	
   end
 
+ factory :blank_user, class: User do
+    title			""
+    name			""
+    surname			""
+    email			""
+    password			""
+    password_confirmation	""	
+  end
+
   factory :subject do
     subject "Science"
   end
+
+  factory :student do
+   group
+   name				Faker::Name.first_name
+   surname			Faker::Name.last_name
+  end
+
+
+  factory :group do
+    group			"First"
+    day				"Friday"
+    week			"AB"
+    time			"17:00"
+    subject
+
+  end
+
+
+
+
 
 end

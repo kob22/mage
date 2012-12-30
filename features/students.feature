@@ -5,8 +5,7 @@ Feature: Students
 
 	Background:
 	  Given I am logged in
-          And I add subject
-	  And I add group
+          And I added group
 
 	Scenario: User add students
 	  When I add group of students 

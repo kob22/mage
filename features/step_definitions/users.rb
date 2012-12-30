@@ -12,27 +12,17 @@ end
 World(EmailHelpers)
 World(ShowMeTheCookies)
 
-def valid_visitor
-  @visitor ||= { :title => 'mgr', :name => "Konrad", :surname => "Ziaja", :email => "kob2222@gmail.com",
-    :password => "apka123", :password_confirmation => "apka123" }
-end
-
-
-def blank_visitor
-  @visitor ||= { :title => '', :name => "", :surname => "", :email => "",
-    :password => "", :password_confirmation => "" }
-end
 
 
 def sign_up
 visit '/signup'
 click_link 'Sign Up'
-fill_in "user_title", :with => @visitor[:title]
-fill_in "user_name", :with => @visitor[:name]
-fill_in "user_surname", :with => @visitor[:surname]
-fill_in "user_email", :with => @visitor[:email]
-fill_in "user_password", :with => @visitor[:password]
-fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
+fill_in "user_title", :with => @user.title
+fill_in "user_name", :with => @user.name
+fill_in "user_surname", :with => @user.surname
+fill_in "user_email", :with => @user.email
+fill_in "user_password", :with => @user.password
+fill_in "user_password_confirmation", :with => @user.password_confirmation
 click_button "Sign Up"
 
 end
@@ -57,17 +47,17 @@ Given /^I am not logged in$/ do
 end
 
 When /^I sign up with valid user data$/ do
-valid_visitor
+ @user=FactoryGirl.build(:user)
 sign_up
 end
 
 Then /^I should see a successful sign up message$/ do
   page.should have_content "Thank you for signing up!"
-  page.should have_content "Logged in as #{@visitor[:title]} #{@visitor[:name]} #{@visitor[:surname]}"
+  page.should have_content "Logged in as #{@user.title} #{@user.name} #{@user.surname}"
 end
 
 When /^I sign up with no data$/ do
-  blank_visitor
+ @user=FactoryGirl.build(:blank_user)
   sign_up
 end
 
@@ -88,8 +78,8 @@ end
 
 
 When /^I sign up with an invalid email$/ do
-  valid_visitor
-@visitor = @visitor.merge(:email => "kob222@gmailcom")
+ @user=FactoryGirl.build(:user)
+@user.email = "kob2222@gmailcom"
   sign_up
 end
 
@@ -98,8 +88,9 @@ Then /^I should see an invalid email message$/ do
 end
 
 When /^I sign up with too short password$/ do
-  valid_visitor
-@visitor = @visitor.merge(:password => "1234", :password_confirmation => "1234")
+ @user=FactoryGirl.build(:user)
+@user.password = "1234"
+@user.password_confirmation = "1234"
   sign_up
 end
 
@@ -108,8 +99,8 @@ Then /^I should see too short password message$/ do
 end
 
 When /^I sign up with mismatched password and confirmation$/ do
-  valid_visitor
-   @visitor = @visitor.merge(:password_confirmation => "apka12345")
+ @user=FactoryGirl.build(:user)
+@user.password_confirmation = "apka1234"
   sign_up
 end
 
