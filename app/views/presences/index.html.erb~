@@ -32,7 +32,7 @@
 				</tr>
 				<% @presences.each do |presence| %>
 				  <tr>
-				    <td><%= presence.student.name </td>
+				    <td>s<%= presence.student.name %></td>
 				    <td><%= presence.student.surname %></td>
 				    <td><%= status_presence(presence.presence) %></td>
 				   </tr>

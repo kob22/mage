@@ -12,10 +12,10 @@ Feature: Presences
 	  When I check the presence
 	  Then I should see list of presence.
 
-	Scenario: User see list of presences
-	  Given I added a few classes
-	  When I checked the presences
-          Then I should see all presences on the presences group list
-	  
+#	Scenario: User see list of presences
+#	  Given I added a few classes
+#	  When I checked the presences
+#          Then I should see all presences on the presences group list
+#	  
 
 
