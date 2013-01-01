@@ -34,9 +34,9 @@
 				<% @presences.each do |presence| %>
 				<%= fields_for "presences[]", presence do |f| %>
 				<tr>
-				    <td><%= f.label presence.student.name  %></td>
+				    <td><%= f.label presence.student.name, presence.student.name  %></td>
 				    <td><%= f.label presence.student.surname  %></td>
-				    <td><%= f.check_box :presence, class: "cb-element" %></td>
+				    <td><%= f.check_box :presence, class: "pr-el" %></td>
 				</tr>
 				<% end %>
 			        <% end %>

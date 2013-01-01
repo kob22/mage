@@ -40,7 +40,13 @@ FactoryGirl.define do
 
   end
 
+  factory :lab_class do
+    subject			"First lesson"
+    date			Time.now
+    note			"Some note about lesson"
+    group
 
+  end
 
 
 

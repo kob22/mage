@@ -66,7 +66,6 @@ end
 
 
 Given /^I added a few classes$/ do
-  @labclasses= Array.new
   5.times do |n|
 	 @labclasses[n] = FactoryGirl.create(:lab_class, subject: "Lesson number #{n}", group: @group)
   end

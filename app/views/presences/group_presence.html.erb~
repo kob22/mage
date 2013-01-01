@@ -37,7 +37,7 @@
 				    <td><%= student.name %></td>
 				    <td><%= student.surname %></td>
 				<% @lab_class.each do |lab_class| %>
-				    <td><%= lab_class.presences.where(student_id: student.id).first.presence %></td>
+				    <td><%= status_presence(lab_class.presences.where(student_id: student.id).first.presence) %></td>
 				<% end %>
 
 				   </tr>

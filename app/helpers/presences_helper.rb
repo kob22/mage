@@ -1,7 +1,7 @@
 module PresencesHelper
 	
 	def status_presences
-	  [ '<img class="absent">'.html_safe, '<img class="present">'.html_safe ]
+	  [ '<img class="absent" alt="absent">'.html_safe, '<img class="present" alt="present">'.html_safe ]
 	end
 
 

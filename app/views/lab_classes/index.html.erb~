@@ -43,12 +43,12 @@
 				    <td><%= lab_class.date %></td>
 				    <td><%= lab_class.note %></td>
 				    <td class="options-width">
-					<%= link_to 'Show', lab_class %>
-					<%= link_to 'Edit', edit_lab_class_path(lab_class) %>
-					<%= link_to 'Students', group_students_path(lab_class.group) %>
-					<%= link_to 'Presence', lab_class_presences_path(lab_class) %>
-					<%= link_to 'Check Presence', lab_class_presences_check_presence_path(lab_class) %>
-					<%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%= link_to 'Show', lab_class, id: "show_lab_class_{#lab_class.id}" %>
+					<%= link_to 'Edit', edit_lab_class_path(lab_class), id: "edit_lab_class_{#lab_class.id}" %>
+					<%= link_to 'Students', group_students_path(lab_class.group), id: "students_lab_class_{#lab_class.id}" %>
+					<%= link_to 'Presence', lab_class_presences_path(lab_class), id: "presence_lab_class_{#lab_class.id}" %>
+					<%= link_to 'Check Presence', lab_class_presences_check_presence_path(lab_class), id: "check_presence_lab_class_{#lab_class.id}" %>
+					<%= link_to 'Destroy', lab_class, method: :delete, data: { confirm: 'Are you sure?' }, id: "destroy_lab_class_{#lab_class.id}" %>
 
 					</td>
 				</tr>

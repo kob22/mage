@@ -4,11 +4,11 @@ FactoryGirl.define do
 
   factory :user do
     title			"mgr"
-    name			"Jasfan"
-    surname			"Kowasfaalski"
-    email			"kobasfa2222@gmail.com"
-    password			"apkabca123"
-    password_confirmation	"apkabca123"	
+    name			"Jan"
+    surname			"Kowalski"
+    email			"kob2222@gmail.com"
+    password			"apka123"
+    password_confirmation	"apka123"	
   end
 
  factory :blank_user, class: User do
@@ -26,21 +26,27 @@ FactoryGirl.define do
 
   factory :student do
    group
-   name				Faker::Name.first_name
-   surname			Faker::Name.last_name
+   name				
+   surname			
   end
 
 
   factory :group do
-    group			"Last"
-    day				"Monday"
-    week			"A32B"
-    time			"1a7:00"
+    group			"First"
+    day				"Friday"
+    week			"AB"
+    time			"17:00"
     subject
 
   end
 
+  factory :lab_class do
+    subject			"First lesson"
+    date			Time.now
+    note			"Some note about lesson"
+    group
 
+  end
 
 
 

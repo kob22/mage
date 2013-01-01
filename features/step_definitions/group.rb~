@@ -7,7 +7,6 @@ def add_group(group_name, group_day, group_week, group_time)
   fill_in "group_week", with: group_week
   # select default time
   click_button "Create Group"
-
 end
 
 
@@ -46,7 +45,7 @@ end
 
 When /^I edit group$/ do
 
-  @group=FactoryGirl.create(:group)
+  @group=FactoryGirl.create(:group, subject: @subject)
   visit subjects_path
   click_link "Groups"
   click_link "Edit"
@@ -81,10 +80,11 @@ Then /^I should see this edited group with valid data on the list$/ do
 end
 
 When /^I delete group$/ do
-  @group=FactoryGirl.create(:group)
+  @subject = FactoryGirl.create(:subject)
+  @group=FactoryGirl.create(:group, subject: @subject)
   @students = FactoryGirl.create_list(:student, 10, group: @group)
-  visit groups_path
-  page.should have_content @group.group
+  visit subjects_path
+  page.should have_content "sdgsgsdgsd"
   click_link "Students"
   @students.each do |student|
   
