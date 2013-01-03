@@ -24,7 +24,6 @@
 	
 		 
 				<!--  start product-table ..................................................................................... -->
-				<form id="mainform" action="">
 				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Subject Name</a>	</th>
@@ -32,19 +31,18 @@
 				</tr>
 				<% @subjects.each do |subject| %>
 				<tr>
-					<td><%= subject.subject %></td>
+					<td><%= link_to subject.subject, subject %></td>
 					<td class="options-width">
 
 					<%= link_to 'Show', subject %>
 					<%= link_to 'Edit', edit_subject_path(subject) %>
-					<%= link_to 'Groups', subject_groups_path(subject) %>
+					<%= link_to 'Groups', subject_groups_path(Student.find(3)) %>
 					<%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %>
 					</td>
 				</tr>
 				<% end %>
 				</table>
 				<!--  end product-table................................... --> 
-				</form>
 			</div>
 			<!--  end content-table  -->
 		

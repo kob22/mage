@@ -39,7 +39,7 @@
 				<% @lab_classes.each do |lab_class| %>
 				<tr>
 				    <td><%= link_to lab_class.group.group, lab_class.group %></td>
-				    <td><%= lab_class.subject %></td>
+				    <td><%= link_to lab_class.subject, lab_class %></td>
 				    <td><%= lab_class.date %></td>
 				    <td><%= lab_class.note %></td>
 				    <td class="options-width">

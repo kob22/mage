@@ -1,5 +1,5 @@
 class LabClass < ActiveRecord::Base
-  attr_accessible :date, :mark, :note, :subject
+  attr_accessible :date, :note, :subject
   belongs_to :group
   has_many :presences, :dependent => :destroy 
   validates :subject, presence: true

@@ -16,6 +16,7 @@ Mag::Application.routes.draw do
   resources :groups, only: [:index]
   resources :students, only: [:index]
   resources :lab_classes, only: [:index]
+  resources :notes, only: [:new, :create, :edit, :update, :destroy]
   resources :subjects, shallow:  true do
   	resources :groups	
   end

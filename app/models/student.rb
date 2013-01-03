@@ -2,6 +2,8 @@ class Student < ActiveRecord::Base
   attr_accessible :name, :surname
   belongs_to :group
   has_many :presences, :dependent => :destroy
+  has_many :notes, :dependent => :destroy
+
 
   validates :name, presence: true
   validates :surname, presence: true

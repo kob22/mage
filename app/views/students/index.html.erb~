@@ -35,7 +35,7 @@
 						<th class="table-header-repeat line-left"><a href="">Subject</a></th>
 					<th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>
-				<% @students.each do |group| %>
+				<% @students.each do |student| %>
 				<tr>
 				    <td><%= student.name %></td>
 				    <td><%= student.surname %></td>

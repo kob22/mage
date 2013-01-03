@@ -76,7 +76,7 @@ class SubjectsController < ApplicationController
     @subject.destroy
 
     respond_to do |format|
-      format.html { redirect_to subjects_url }
+      format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.'  }
       format.json { head :no_content }
     end
   end

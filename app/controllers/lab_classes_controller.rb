@@ -18,7 +18,7 @@ class LabClassesController < ApplicationController
   # GET /lab_classes/1.json
   def show
     @lab_class = LabClass.find(params[:id])
-
+    @students = @lab_class.group.students.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @lab_class }

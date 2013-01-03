@@ -35,7 +35,16 @@
 						<tr>
 							<th valign="top">Group name</th>
 							<td><%= link_to @lab_class.group.group, @lab_class.group %></td>
+
+							<td>
+							<%= link_to 'Edit', edit_lab_class_path(@lab_class) %> | 
+							<%= link_to 'Students', group_students_path(@lab_class.group) %> | 
+							<%= link_to 'Presence', lab_class_presences_path(@lab_class) %> | 
+							<%= link_to 'Check Presence', lab_class_presences_check_presence_path(@lab_class) %> | 
+							<%= link_to 'Destroy', @lab_class, method: :delete, data: { confirm: 'Are you sure?' } %>
+							</td>
 							<td></td>
+
 						</tr>
 						<tr>
 							<th valign="top">Subject</th>
@@ -54,18 +63,9 @@
 						</tr>
 
 						<td></td>
+
 					</tr>
-					<tr>
-						<th>&nbsp;</th>
-						<td valign="top">
-						<%= link_to 'Edit', edit_lab_class_path(@lab_class) %> | 
-						<%= link_to 'Students', group_students_path(@lab_class.group) %> | 
-						<%= link_to 'Presence', lab_class_presences_path(@lab_class) %> | 
-						<%= link_to 'Check Presence', lab_class_presences_check_presence_path(@lab_class) %> | 
-						<%= link_to 'Destroy', @lab_class, method: :delete, data: { confirm: 'Are you sure?' } %>
-						</td>
-						<td></td>
-					</tr>
+
 					</table>
 					<!-- end id-form  -->
 
@@ -76,6 +76,31 @@
 
 				</td>
 				</tr>
+				<tr>
+					<td>
+						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+						<tr>
+								<th class="table-header-repeat line-left"><a href="">Name</a></th>
+								<th class="table-header-repeat line-left"><a href="">Surname</a></th>
+								<th class="table-header-repeat line-left"><a href="">Note</a></th>
+						</tr>
+						<% @students.each do |student| %>
+						<tr>
+						    <td><%= link_to student.name, student %></td>
+						    <td><%= link_to student.surname, student %></td>
+						    <td><% if (@note=Note.find_by_lab_class_id_and_student_id(@lab_class.id,student.id)) %>
+							<%= @note.note %>
+							<br />
+							<%= link_to 'Edit', edit_note_path(@note) %> | <%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %>
+							<% else %>
+							<%= link_to 'New Note', new_note_path(:student_id => student, :lab_class_id => @lab_class) %>
+							<% end %></td>
+						</tr>
+						<% end %>
+
+						</table>
+					</td>
+				<td></td>
 				<tr>
 				<td><img src="/assets/shared/blank.gif" width="695" height="1" alt="blank" /></td>
 				<td></td>

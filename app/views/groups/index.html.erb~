@@ -33,7 +33,7 @@
 						<th class="table-header-repeat line-left minwidth-1"><a href="">Subject Name</a>	</th>
 						<th class="table-header-repeat line-left"><a href="">Group Name</a></th>
 						<th class="table-header-repeat line-left"><a href="">Day</a></th>
-						<th class="table-header-repeat line-left"><a href="">Weel</a></th>
+						<th class="table-header-repeat line-left"><a href="">Week</a></th>
 						<th class="table-header-repeat line-left"><a href="">Time</a></th>
 					<th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>

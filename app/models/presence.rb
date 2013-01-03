@@ -1,8 +1,8 @@
 class Presence < ActiveRecord::Base
   attr_accessible :lab_class_id, :note, :presence, :student_id
-belongs_to :lab_class
-belongs_to :student
-has_many :lab_marks, :dependent => :destroy
+	belongs_to :lab_class
+	belongs_to :student
+	has_many :lab_marks, :dependent => :destroy
 
   def self.create_presence(lab_class_id)
 	 @students = LabClass.find(lab_class_id).group.students.all

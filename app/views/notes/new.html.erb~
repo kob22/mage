@@ -1,0 +1,4 @@
+<div id="page-heading"><h1>New Note about <%= @student.name %> <%= @student.surname %></h1></div>
+
+<%= render 'form' %>
+

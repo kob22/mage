@@ -435,9 +435,7 @@ td.checkbox-width	{
 th.line-left	{
 	border-left: 1px solid #373737;
 	}
-#presence 	{
-	font-size: 40px;
-	}
+
 #product-table	tr.activity-blue	{
 	background: #e3eceb;
 	}
@@ -702,7 +700,7 @@ a:hover.action-delete	{
 	line-height: 28px;
 	min-width: 130px;
 	padding: 0 0 10px 0;
-	text-align: left;
+
 	width: 130px;
 	}
 .styledselect-day ,

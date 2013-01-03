@@ -25,7 +25,8 @@ has_many :lab_marks, :dependent => :destroy
 			@presence = student.presences.new(lab_class_id: lab_class_id)
 	      		@presence.save
 			end
-	    	    end			
+	    	    end
+		    end  				
 			
 
 

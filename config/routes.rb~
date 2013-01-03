@@ -16,6 +16,7 @@ Mag::Application.routes.draw do
   resources :groups, only: [:index]
   resources :students, only: [:index]
   resources :lab_classes, only: [:index]
+  resources :notes, only: [:new, :create, :edit, :update]
   resources :subjects, shallow:  true do
   	resources :groups	
   end
@@ -23,7 +24,7 @@ Mag::Application.routes.draw do
   resources :groups, shallow:  true do
   	resources :students	
   	resources :lab_classes
-        match '/presences/=' => "presences#group_presence", via: 'GET'
+        match '/presences/' => "presences#group_presence", via: 'GET'
   end
 
   resources :lab_classes do

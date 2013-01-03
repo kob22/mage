@@ -14,7 +14,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.json
   def show
     @subject = Subject.find(params[:id])
-
+    @groups = @subject.groups.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @subject }
