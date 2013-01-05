@@ -1,9 +1,6 @@
 Mag::Application.routes.draw do
 
 
-  resources :lab_marks
-
-
     root :to => "static_pages#home"
 
   get 'signup', to: 'users#new', as: 'signup'
@@ -17,6 +14,7 @@ Mag::Application.routes.draw do
   resources :students, only: [:index]
   resources :lab_classes, only: [:index]
   resources :notes, only: [:new, :create, :edit, :update, :destroy]
+  resources :marks, only: [:new, :create, :edit, :update, :destroy, :index]
   resources :subjects, shallow:  true do
   	resources :groups	
   end
@@ -25,6 +23,9 @@ Mag::Application.routes.draw do
   	resources :students	
   	resources :lab_classes
         match '/presences/' => "presences#group_presence", via: 'GET'
+        match '/give_marks' => "fmarks#give_mark", via: 'GET'
+        match '/final_marks' => "fmarks#index", via: 'GET'
+        match '/update_marks' => "fmarks#update_mark", via: 'POST'
   end
 
   resources :lab_classes do

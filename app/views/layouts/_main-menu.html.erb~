@@ -28,11 +28,18 @@
 		<div class="nav">
 		<div class="table">
 
-		<ul class="select"><li><%= link_to "<b>Subject</b>".html_safe, subjects_path %>
+		<% if  current_controller?('subjects') %>
+		<ul class="current">	
+		<li><%= link_to "<b>M Subject</b>".html_safe, subjects_path %>
+		<div class="select_sub show">
+		<% else %>
+		<ul class="select">
+		<li><%= link_to "<b>M Subject</b>".html_safe, subjects_path %>
 		<div class="select_sub">
+		<% end %>
 			<ul class="sub">
-				<li><%= link_to "All Subjects", subjects_path %></li>
-				<li><%= link_to "New Subject", new_subject_path %></li>
+				<%= active_li('subjects','index','All Subjects', subjects_path) %>
+				<%= active_li('subjects','new','New Subject', new_subject_path) %>
 			</ul>
 		</div>
 		</li>
@@ -40,10 +47,18 @@
 		
 		<div class="nav-divider">&nbsp;</div>
 		                    
-		<ul class="select"><li><%= link_to "<b>Group</b>".html_safe, groups_path %>
+
+		<% if  current_controller?('groups') %>
+		<ul class="current">	
+		<li><%= link_to "<b>M Groups</b>".html_safe, groups_path %>
+		<div class="select_sub show">
+		<% else %>
+		<ul class="select">
+		<li><%= link_to "<b>M Groups</b>".html_safe, groups_path %>
 		<div class="select_sub">
+		<% end %>
 			<ul class="sub">
-				<li><%= link_to "All Groups", groups_path %></li>
+				<%= active_li('groups','index','All Groups', groups_path) %>
 				
 			</ul>
 		</div>
@@ -52,8 +67,16 @@
 		
 		<div class="nav-divider">&nbsp;</div>
 
-		<ul class="select"><li><%= link_to "<b>Students</b>".html_safe, students_path %>
+
+		<% if  current_controller?('students') %>
+		<ul class="current">	
+		<li><%= link_to "<b>M Students</b>".html_safe, students_path %>
+		<div class="select_sub show">
+		<% else %>
+		<ul class="select">
+		<li><%= link_to "<b>M Students</b>".html_safe, students_path %>
 		<div class="select_sub">
+		<% end %>
 			<ul class="sub">
 			</ul>
 		</div>

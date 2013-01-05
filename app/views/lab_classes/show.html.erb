@@ -83,6 +83,7 @@
 								<th class="table-header-repeat line-left"><a href="">Name</a></th>
 								<th class="table-header-repeat line-left"><a href="">Surname</a></th>
 								<th class="table-header-repeat line-left"><a href="">Note</a></th>
+								<th class="table-header-repeat line-left"><a href="">Mark</a></th>
 						</tr>
 						<% @students.each do |student| %>
 						<tr>
@@ -95,6 +96,17 @@
 							<% else %>
 							<%= link_to 'New Note', new_note_path(:student_id => student, :lab_class_id => @lab_class) %>
 							<% end %></td>
+						    <td><% if (@marks=Mark.find_all_by_lab_class_id_and_student_id(@lab_class.id,student.id)) %>
+							<% @marks.each do |mark| %>
+							<%= mark.mark  %>
+							<% end %>
+							<% end %>
+							<br />
+							<%= link_to 'New Mark', new_mark_path(:student_id => student, :lab_class_id => @lab_class) %>
+							<% if @marks %>
+							<%= link_to 'Manage', marks_path(:student_id => student, :lab_class_id => @lab_class) %>
+							<% end %>
+							</td>
 						</tr>
 						<% end %>
 

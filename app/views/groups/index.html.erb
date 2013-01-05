@@ -50,6 +50,9 @@
 					<%= link_to 'Students', group_students_path(group) %>
 					<%= link_to 'Presence', group_group_presences_path(group) %>
 					<%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<br />
+					<%= link_to 'Final Marks', group_group_final_marks_path(group) %>
+					<%= link_to 'Give Final Marks', group_group_give_marks_path(group) %>
 
 					</td>
 				</tr>

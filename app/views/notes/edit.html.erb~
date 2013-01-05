@@ -63,8 +63,8 @@
 	<tr>
 		<th>&nbsp;</th>
 		<td valign="top">
-			<%= f.hidden_field :student_id, value: @student.id %>
-			<%= f.hidden_field :lab_class_id, value: @lab_class.id %>
+			<%= f.hidden_field :student_id  %>
+			<%= f.hidden_field :lab_class_id %>
 			<%= f.submit :class => "form-submit" %>
 		</td>
 		<td></td>

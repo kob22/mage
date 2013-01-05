@@ -1,6 +1,6 @@
 <div id="page-heading"><h1>Edit Note</h1></div>
 
-<%= form_for(@note) do |f| %>
+<%= form_for(@mark) do |f| %>
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
 		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
@@ -15,8 +15,8 @@
 	<!--  start content-table-inner -->
 	<div id="content-table-inner">
 
-  				<% if @note.errors.any? %>
-				<% @note.errors.full_messages.each do |msg| %>
+  				<% if @mark.errors.any? %>
+				<% @mark.errors.full_messages.each do |msg| %>
 				<!--  start message-red -->
 				<div id="message-red">
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
@@ -39,17 +39,22 @@
 		<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 		<tr>
 			<th valign="top">Name</th>
-			<td><%= @note.student.name %></td>
+			<td><%= @mark.student.name %></td>
 			<td></td>
 		</tr>
 		<tr>
 			<th valign="top">Surname</th>
-			<td><%= @note.student.surname %></td>
+			<td><%= @mark.student.surname %></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th valign="top"><%= f.label :mark %></th>
+			<td><%= f.text_field :mark %></td>
 			<td></td>
 		</tr>
 		<tr>
 			<th valign="top"><%= f.label :note %></th>
-			<td><%= f.text_area :note%></td>
+			<td><%= f.text_field :note %></td>
 			<td></td>
 		</tr>
 		<tr>
@@ -63,8 +68,6 @@
 	<tr>
 		<th>&nbsp;</th>
 		<td valign="top">
-			<%= f.hidden_field :student_id  %>
-			<%= f.hidden_field :lab_class_id %>
 			<%= f.submit :class => "form-submit" %>
 		</td>
 		<td></td>

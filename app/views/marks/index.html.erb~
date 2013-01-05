@@ -1,7 +1,7 @@
-<% provide(:title, 'Show Group') %>
+<% provide(:title, 'Show Lab Class') %>
 	<!--  start page-heading -->
 	<div id="page-heading">
-		<h1>Show Group</h1>
+		<h1>Show Lab Class</h1>
 	</div>
 	<!-- end page-heading -->
 
@@ -33,47 +33,28 @@
 						<!-- start id-form -->
 						<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
 						<tr>
-							<th valign="top">Subject name</th>
-							<td><%= link_to @group.subject.subject, @group.subject %></td>
+							<th valign="top">Lab Class Subject</th>
+							<td><%= link_to @lab_class.subject, @lab_class %></td>
 							<td></td>
+
 						</tr>
 						<tr>
-							<th valign="top">Group name</th>
-							<td><%= @group.group %></td>
+							<th valign="top">Student Name</th>
+							<td><%= link_to @student.name, @student %></td>
 							<td></td>
+
 						</tr>
 						<tr>
-							<th valign="top">Day</th>
-							<td><%= @group.day  %></td>
+							<th valign="top">Student Surname</th>
+							<td><%= link_to @student.surname, @student %></td>
 							<td></td>
-						</tr>
-						<tr>
-							<th valign="top">Week</th>
-							<td><%= @group.week  %></td>
-							<td></td>
-						</tr>
-						<tr>
-							<th valign="top">Time</th>
-							<td><%= @group.time  %></td>
-							<td></td>
+
 						</tr>
 
 						<td></td>
-					</tr>
-					<tr>
-						<th>&nbsp;</th>
-						<td valign="top">
-							<%= link_to 'Edit', edit_group_path(@group) %> | 
-							<%= link_to 'Classes', group_lab_classes_path(@group) %> | 
-							<%= link_to 'Students', group_students_path(@group) %> | 
-							<%= link_to 'Presence', group_group_presences_path(@group) %> | 
-							<%= link_to 'Destroy', @group, method: :delete, data: { confirm: 'Are you sure?' } %> | 
-							<%= link_to 'Final Marks', group_group_final_marks_path(group) %> | 
-							<%= link_to 'Give Final Marks', group_group_give_marks_path(group) %>
 
-						</td>
-						<td></td>
 					</tr>
+
 					</table>
 					<!-- end id-form  -->
 
@@ -84,6 +65,28 @@
 
 				</td>
 				</tr>
+				<tr>
+					<td>
+						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+						<tr>
+								<th class="table-header-repeat line-left"><a href="">Mark</a></th>
+								<th class="table-header-repeat line-left"><a href="">Note</a></th>
+								<th class="table-header-repeat line-left"><a href="">Date</a></th>
+								<th class="table-header-repeat line-left"><a href="">Options</a></th>
+						</tr>
+						<% @marks.each do |mark| %>
+						<tr>
+						    <td><%= mark.mark %></td>
+						    <td><%= mark.note %></td>
+						    <td><%= mark.date %></td>
+						    <td><%= link_to 'Edit', edit_mark_path(mark) %> | <%= link_to 'Destroy', mark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						    <td></td>
+						</tr>
+						<% end %>
+
+						</table>
+					</td>
+				<td></td>
 				<tr>
 				<td><img src="/assets/shared/blank.gif" width="695" height="1" alt="blank" /></td>
 				<td></td>
