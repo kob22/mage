@@ -1,115 +1,112 @@
 <% provide(:title, 'Show Lab Class') %>
-	<!--  start page-heading -->
-	<div id="page-heading">
-		<h1>Show Lab Class</h1>
-	</div>
-	<!-- end page-heading -->
+<!--  start page-heading -->
+<div id="page-heading">
+  <h1>Show Lab Class</h1>
+</div>
+<!-- end page-heading -->
 
-	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
-	<tr>
-		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
-		<th class="topleft"></th>
-		<td id="tbl-border-top">&nbsp;</td>
-		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
-	</tr>
-	<tr>
-		<td id="tbl-border-left"></td>
-		<td>
-		<!--  start content-table-inner ...................................................................... START -->
-		<div id="content-table-inner">
-		
-			<!--  start table-content  -->
-			<div id="table-content">
-	
-		 
-				<!--  start product-table ..................................................................................... -->
-					<table border="0" width="100%" height="240px" cellpadding="0" cellspacing="0">
-					<tr valign="top">
-					<td>
-	
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+  <tr>
+    <th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt=""/></th>
+    <th class="topleft"></th>
+    <td id="tbl-border-top">&nbsp;</td>
+    <th class="topright"></th>
+    <th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt=""/></th>
+  </tr>
+  <tr>
+    <td id="tbl-border-left"></td>
+    <td>
+      <!--  start content-table-inner ...................................................................... START -->
+      <div id="content-table-inner">
 
-	
-						<!-- start id-form -->
-						<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
-						<tr>
-							<th valign="top">Lab Class Subject</th>
-							<td><%= link_to @lab_class.subject, @lab_class %></td>
-							<td></td>
-
-						</tr>
-						<tr>
-							<th valign="top">Student Name</th>
-							<td><%= link_to @student.name, @student %></td>
-							<td></td>
-
-						</tr>
-						<tr>
-							<th valign="top">Student Surname</th>
-							<td><%= link_to @student.surname, @student %></td>
-							<td></td>
-
-						</tr>
-
-						<td></td>
-
-					</tr>
-
-					</table>
-					<!-- end id-form  -->
-
-					</td>
-					<td>
+        <!--  start table-content  -->
+        <div id="table-content">
 
 
-
-				</td>
-				</tr>
-				<tr>
-					<td>
-						<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
-						<tr>
-								<th class="table-header-repeat line-left"><a href="">Mark</a></th>
-								<th class="table-header-repeat line-left"><a href="">Note</a></th>
-								<th class="table-header-repeat line-left"><a href="">Date</a></th>
-								<th class="table-header-repeat line-left"><a href="">Options</a></th>
-						</tr>
-						<% @marks.each do |mark| %>
-						<tr>
-						    <td><%= mark.mark %></td>
-						    <td><%= mark.note %></td>
-						    <td><%= mark.date %></td>
-						    <td><%= link_to 'Edit', edit_mark_path(mark) %> | <%= link_to 'Destroy', mark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-						</tr>
-						<% end %>
-
-						</table>
-					</td>
-				<td></td>
-				<tr>
-				<td><img src="/assets/shared/blank.gif" width="695" height="1" alt="blank" /></td>
-				<td></td>
-				</tr>
-				</table>
-				<!--  end product-table................................... --> 
-
-			</div>
-			<!--  end content-table  -->
-		
+          <!--  start product-table ..................................................................................... -->
+          <table border="0" width="100%" height="240px" cellpadding="0" cellspacing="0">
+            <tr valign="top">
+              <td>
 
 
-			
-			<div class="clear"></div>
-		 
-		</div>
-		<!--  end content-table-inner ............................................END  -->
-		</td>
-		<td id="tbl-border-right"></td>
-	</tr>
-	<tr>
-		<th class="sized bottomleft"></th>
-		<td id="tbl-border-bottom">&nbsp;</td>
-		<th class="sized bottomright"></th>
-	</tr>
-	</table>
-	<div class="clear">&nbsp;</div>
+                <!-- start id-form -->
+                <table border="0" cellpadding="0" cellspacing="0" id="id-form">
+                  <tr>
+                    <th valign="top">Lab Class Subject</th>
+                    <td><%= link_to @lab_class.subject, @lab_class %></td>
+                    <td></td>
+
+                  </tr>
+                  <tr>
+                    <th valign="top">Student Name</th>
+                    <td><%= link_to @student.name, @student %></td>
+                    <td></td>
+
+                  </tr>
+                  <tr>
+                    <th valign="top">Student Surname</th>
+                    <td><%= link_to @student.surname, @student %></td>
+                    <td></td>
+
+                  </tr>
+
+                  <td></td>
+
+                  </tr>
+
+                </table>
+                <!-- end id-form  -->
+
+              </td>
+              <td>
+
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+                  <tr>
+                    <th class="table-header-repeat line-left"><a href="">Mark</a></th>
+                    <th class="table-header-repeat line-left"><a href="">Note</a></th>
+                    <th class="table-header-repeat line-left"><a href="">Date</a></th>
+                    <th class="table-header-repeat line-left"><a href="">Options</a></th>
+                  </tr>
+                  <% @marks.each do |mark| %>
+                      <tr>
+                        <td><%= mark.mark %></td>
+                        <td><%= mark.note %></td>
+                        <td><%= mark.date %></td>
+                        <td><%= link_to 'Edit', edit_mark_path(mark) %>
+                          | <%= link_to 'Destroy', mark, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                      </tr>
+                  <% end %>
+
+                </table>
+              </td>
+              <td></td>
+            <tr>
+              <td><img src="/assets/shared/blank.gif" width="695" height="1" alt="blank"/></td>
+              <td></td>
+            </tr>
+          </table>
+          <!--  end product-table................................... -->
+
+        </div>
+        <!--  end content-table  -->
+
+
+        <div class="clear"></div>
+
+      </div>
+      <!--  end content-table-inner ............................................END  -->
+    </td>
+    <td id="tbl-border-right"></td>
+  </tr>
+  <tr>
+    <th class="sized bottomleft"></th>
+    <td id="tbl-border-bottom">&nbsp;</td>
+    <th class="sized bottomright"></th>
+  </tr>
+</table>
+<div class="clear">&nbsp;</div>

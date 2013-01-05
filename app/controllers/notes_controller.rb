@@ -16,7 +16,7 @@ class NotesController < ApplicationController
   def create
     @student = Student.find(params[:student_id])
     @lab_class = LabClass.find(params[:lab_class_id])
-     @note = Note.new(params[:note])
+    @note = Note.new(params[:note])
 
     respond_to do |format|
       if @note.save

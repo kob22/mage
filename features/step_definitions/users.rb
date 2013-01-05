@@ -1,5 +1,3 @@
-
-
 module EmailHelpers
   def current_email_address
     # Replace with your a way to find your current email. e.g @current_user.email
@@ -13,32 +11,31 @@ World(EmailHelpers)
 World(ShowMeTheCookies)
 
 
-
 def sign_up
-visit '/signup'
-click_link 'Sign Up'
-fill_in "user_title", :with => @user.title
-fill_in "user_name", :with => @user.name
-fill_in "user_surname", :with => @user.surname
-fill_in "user_email", :with => @user.email
-fill_in "user_password", :with => @user.password
-fill_in "user_password_confirmation", :with => @user.password_confirmation
-click_button "Sign Up"
+  visit '/signup'
+  click_link 'Sign Up'
+  fill_in "user_title", :with => @user.title
+  fill_in "user_name", :with => @user.name
+  fill_in "user_surname", :with => @user.surname
+  fill_in "user_email", :with => @user.email
+  fill_in "user_password", :with => @user.password
+  fill_in "user_password_confirmation", :with => @user.password_confirmation
+  click_button "Sign Up"
 
 end
 
 
 def log_out
-visit '/logout'
+  visit '/logout'
 end
 
 
 def log_in
-visit '/'
-click_link 'Log In'
-fill_in "email", :with => @user.email
-fill_in "password", :with => @user.password
-click_button "Log In"
+  visit '/'
+  click_link 'Log In'
+  fill_in "email", :with => @user.email
+  fill_in "password", :with => @user.password
+  click_button "Log In"
 end
 
 
@@ -47,8 +44,8 @@ Given /^I am not logged in$/ do
 end
 
 When /^I sign up with valid user data$/ do
- @user=FactoryGirl.build(:user)
-sign_up
+  @user=FactoryGirl.build(:user)
+  sign_up
 end
 
 Then /^I should see a successful sign up message$/ do
@@ -57,29 +54,28 @@ Then /^I should see a successful sign up message$/ do
 end
 
 When /^I sign up with no data$/ do
- @user=FactoryGirl.build(:blank_user)
+  @user=FactoryGirl.build(:blank_user)
   sign_up
 end
 
 
 Then /^I should see an error message$/ do
-page.should have_content "Title can't be blank"
-page.should have_content "Name can't be blank"
-page.should have_content "Surname can't be blank"
-page.should have_content "Email can't be blank"
-page.should have_content "Password can't be blank"
-page.should have_content "Title is too short (minimum is 3 characters)"
-page.should have_content "Name is too short (minimum is 3 characters)"
-page.should have_content "Surname is too short (minimum is 3 characters)"
-page.should have_content "Sign Up"
+  page.should have_content "Title can't be blank"
+  page.should have_content "Name can't be blank"
+  page.should have_content "Surname can't be blank"
+  page.should have_content "Email can't be blank"
+  page.should have_content "Password can't be blank"
+  page.should have_content "Title is too short (minimum is 3 characters)"
+  page.should have_content "Name is too short (minimum is 3 characters)"
+  page.should have_content "Surname is too short (minimum is 3 characters)"
+  page.should have_content "Sign Up"
 
 end
 
 
-
 When /^I sign up with an invalid email$/ do
- @user=FactoryGirl.build(:user)
-@user.email = "kob2222@gmailcom"
+  @user=FactoryGirl.build(:user)
+  @user.email = "kob2222@gmailcom"
   sign_up
 end
 
@@ -88,9 +84,9 @@ Then /^I should see an invalid email message$/ do
 end
 
 When /^I sign up with too short password$/ do
- @user=FactoryGirl.build(:user)
-@user.password = "1234"
-@user.password_confirmation = "1234"
+  @user=FactoryGirl.build(:user)
+  @user.password = "1234"
+  @user.password_confirmation = "1234"
   sign_up
 end
 
@@ -99,8 +95,8 @@ Then /^I should see too short password message$/ do
 end
 
 When /^I sign up with mismatched password and confirmation$/ do
- @user=FactoryGirl.build(:user)
-@user.password_confirmation = "apka1234"
+  @user=FactoryGirl.build(:user)
+  @user.password_confirmation = "apka1234"
   sign_up
 end
 
@@ -110,7 +106,7 @@ end
 
 
 Given /^I signed up$/ do
- @user=FactoryGirl.create(:user)
+  @user=FactoryGirl.create(:user)
 end
 
 Given /^I am not logged$/ do
@@ -150,7 +146,7 @@ Then /^I should be logged out$/ do
 end
 
 When /^I log in with wrong password$/ do
-@user.password = "asffdbd234"
+  @user.password = "asffdbd234"
   log_in
 end
 
@@ -173,7 +169,6 @@ end
 Then /^I should see a signed out message$/ do
   page.should have_content "Logged out!"
 end
-
 
 
 When /^I log in with valid credentials and check box remember me$/ do
@@ -211,7 +206,7 @@ end
 When /^I request an email with password reset$/ do
   visit login_path
   click_link "Reset password"
-  fill_in "email", with:  @user.email
+  fill_in "email", with: @user.email
   click_button "Reset Password"
   page.should have_content "Email sent with password reset instructions."
 end

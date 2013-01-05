@@ -8,20 +8,17 @@ class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
 
 
-
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }, length: { maximum: 50 }
+  validates :email, presence: true, format: {with: VALID_EMAIL_REGEX},
+            uniqueness: {case_sensitive: false}, length: {maximum: 50}
 
-  validates :title, presence: true, length: { minimum: 3, maximum: 50 }
-  validates :name, presence: true, length: { minimum: 3, maximum: 50 }
-  validates :surname, presence: true, length: { minimum: 3, maximum: 50 }
-  validates :password, presence: true, length: { minimum: 5, maximum: 20 }, unless: Proc.new { |user| user.password.nil? }
-  validates :password_confirmation, presence: true, length: { minimum: 5, maximum: 20 }, unless: Proc.new { |user| user.password.nil? }
-  
+  validates :title, presence: true, length: {minimum: 3, maximum: 50}
+  validates :name, presence: true, length: {minimum: 3, maximum: 50}
+  validates :surname, presence: true, length: {minimum: 3, maximum: 50}
+  validates :password, presence: true, length: {minimum: 5, maximum: 20}, unless: Proc.new { |user| user.password.nil? }
+  validates :password_confirmation, presence: true, length: {minimum: 5, maximum: 20}, unless: Proc.new { |user| user.password.nil? }
 
-  
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

@@ -6,7 +6,7 @@ class Mark < ActiveRecord::Base
 
   validates :date, presence: true
   validates :lab_class_id, presence: true
-  validates :student_id, presence: true   
-  validates :mark, presence: true 
+  validates :student_id, presence: true
+  validates :mark, presence: true
 
 end

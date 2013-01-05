@@ -1,26 +1,27 @@
 class FmarksController < ApplicationController
- before_filter :create_mark, only: :give_mark
+  before_filter :create_mark, only: :give_mark
+
   def index
-  @group = Group.find(params[:group_id])
-  @students = @group.students.all
-  @fmarks = Array.new()
-  @students.each do |student|     		
-  @fmarks << Fmark.find_by_student_id(student.id)
-  end
+    @group = Group.find(params[:group_id])
+    @students = @group.students.all
+    @fmarks = Array.new()
+    @students.each do |student|
+      @fmarks << Fmark.find_by_student_id(student.id)
+    end
   end
 
 
   def give_mark
 
-  @group = Group.find(params[:group_id])
-  @students = @group.students.all
-  @fmarks = Array.new()
-  @students.each do |student|     		
-  @fmarks << Fmark.find_by_student_id(student.id)
-  end
-  
-  end
+    @group = Group.find(params[:group_id])
+    @students = @group.students.all
+    @fmarks = Array.new()
+    @students.each do |student|
+      @fmarks << Fmark.find_by_student_id(student.id)
+    end
 
+
+  end
 
 
   def update_mark
@@ -30,17 +31,17 @@ class FmarksController < ApplicationController
     if result.empty?
       flash[:notice] = "Marks Given"
       redirect_to group_path(params[:group_id])
-    else 
+    else
       flash[:notice] = "Marks Not Given"
       redirect_to group_group_give_mark_path(params[:group_id])
-   end
+    end
 
   end
 
   private
 
   def create_mark
-	Fmark.create_mark(params[:group_id])
+    Fmark.create_mark(params[:group_id])
   end
 
 

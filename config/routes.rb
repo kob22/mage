@@ -1,7 +1,7 @@
 Mag::Application.routes.draw do
 
 
-    root :to => "static_pages#home"
+  root :to => "static_pages#home"
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
@@ -15,24 +15,24 @@ Mag::Application.routes.draw do
   resources :lab_classes, only: [:index]
   resources :notes, only: [:new, :create, :edit, :update, :destroy]
   resources :marks, only: [:new, :create, :edit, :update, :destroy, :index]
-  resources :subjects, shallow:  true do
-  	resources :groups	
+  resources :subjects, shallow: true do
+    resources :groups
   end
-  
-  resources :groups, shallow:  true do
-  	resources :students	
-  	resources :lab_classes
-        match '/presences/' => "presences#group_presence", via: 'GET'
-        match '/give_marks' => "fmarks#give_mark", via: 'GET'
-        match '/final_marks' => "fmarks#index", via: 'GET'
-        match '/update_marks' => "fmarks#update_mark", via: 'POST'
+
+  resources :groups, shallow: true do
+    resources :students
+    resources :lab_classes
+    match '/presences/' => "presences#group_presence", via: 'GET'
+    match '/give_marks' => "fmarks#give_mark", via: 'GET'
+    match '/final_marks' => "fmarks#index", via: 'GET'
+    match '/update_marks' => "fmarks#update_mark", via: 'POST'
   end
 
   resources :lab_classes do
-  	resources :presences, only: [:index]
-        match '/presences/check_presence' => "presences#check_presence", via: 'GET'
-        match '/presences/update_presence' => "presences#update_presence", via: 'POST'
-	
+    resources :presences, only: [:index]
+    match '/presences/check_presence' => "presences#check_presence", via: 'GET'
+    match '/presences/update_presence' => "presences#update_presence", via: 'POST'
+
   end
 
   # The priority is based upon order of creation:

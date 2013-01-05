@@ -1,82 +1,80 @@
 <% provide(:title, 'Groups') %>
-	<!--  start page-heading -->
-	<div id="page-heading">
-		<h1>Listing groups</h1>
-					<% unless params[:subject_id]==nil %>
-						<h1><%= link_to 'New', new_subject_group_path %></h1>
-					<% end %>
-	</div>
-	<!-- end page-heading -->
+<!--  start page-heading -->
+<div id="page-heading">
+  <h1>Listing groups</h1>
+  <% unless params[:subject_id]==nil %>
+      <h1><%= link_to 'New', new_subject_group_path %></h1>
+  <% end %>
+</div>
+<!-- end page-heading -->
 
-	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
-	<tr>
-		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
-		<th class="topleft"></th>
-		<td id="tbl-border-top">&nbsp;</td>
-		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
-	</tr>
-	<tr>
-		<td id="tbl-border-left"></td>
-		<td>
-		<!--  start content-table-inner ...................................................................... START -->
-		<div id="content-table-inner">
-		
-			<!--  start table-content  -->
-			<div id="table-content">
-	
-		 
-				<!--  start product-table ..................................................................................... -->
-				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
-				<tr>
-						<th class="table-header-repeat line-left minwidth-1"><a href="">Subject Name</a>	</th>
-						<th class="table-header-repeat line-left"><a href="">Group Name</a></th>
-						<th class="table-header-repeat line-left"><a href="">Day</a></th>
-						<th class="table-header-repeat line-left"><a href="">Week</a></th>
-						<th class="table-header-repeat line-left"><a href="">Time</a></th>
-					<th class="table-header-options line-left"><a href="">Options</a></th>
-				</tr>
-				<% @groups.each do |group| %>
-				<tr>
-				    <td><%= link_to group.subject.subject, group.subject %></td>
-				    <td><%= group.group %></td>
-				    <td><%= group.day %></td>
-				    <td><%= group.week %></td>
-				    <td><%= group.time %></td>		
-				    <td class="options-width">
-					<%= link_to 'Show', group %>
-					<%= link_to 'Edit', edit_group_path(group) %>
-					<%= link_to 'Classes', group_lab_classes_path(group) %>
-					<%= link_to 'Students', group_students_path(group) %>
-					<%= link_to 'Presence', group_group_presences_path(group) %>
-					<%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
-					<br />
-					<%= link_to 'Final Marks', group_group_final_marks_path(group) %>
-					<%= link_to 'Give Final Marks', group_group_give_marks_path(group) %>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+  <tr>
+    <th rowspan="3" class="sized"><img src="/assets/shared/side_shadowleft.jpg" width="20" height="300" alt=""/></th>
+    <th class="topleft"></th>
+    <td id="tbl-border-top">&nbsp;</td>
+    <th class="topright"></th>
+    <th rowspan="3" class="sized"><img src="/assets/shared/side_shadowright.jpg" width="20" height="300" alt=""/></th>
+  </tr>
+  <tr>
+    <td id="tbl-border-left"></td>
+    <td>
+      <!--  start content-table-inner ...................................................................... START -->
+      <div id="content-table-inner">
 
-					</td>
-				</tr>
-				<% end %>
-
-				</table>
-				<!--  end product-table................................... --> 
-			</div>
-			<!--  end content-table  -->
-		
+        <!--  start table-content  -->
+        <div id="table-content">
 
 
-			
-			<div class="clear"></div>
-		 
-		</div>
-		<!--  end content-table-inner ............................................END  -->
-		</td>
-		<td id="tbl-border-right"></td>
-	</tr>
-	<tr>
-		<th class="sized bottomleft"></th>
-		<td id="tbl-border-bottom">&nbsp;</td>
-		<th class="sized bottomright"></th>
-	</tr>
-	</table>
-	<div class="clear">&nbsp;</div>
+          <!--  start product-table ..................................................................................... -->
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+            <tr>
+              <th class="table-header-repeat line-left minwidth-1"><a href="">Subject Name</a></th>
+              <th class="table-header-repeat line-left"><a href="">Group Name</a></th>
+              <th class="table-header-repeat line-left"><a href="">Day</a></th>
+              <th class="table-header-repeat line-left"><a href="">Week</a></th>
+              <th class="table-header-repeat line-left"><a href="">Time</a></th>
+              <th class="table-header-options line-left"><a href="">Options</a></th>
+            </tr>
+            <% @groups.each do |group| %>
+                <tr>
+                  <td><%= link_to group.subject.subject, group.subject %></td>
+                  <td><%= group.group %></td>
+                  <td><%= group.day %></td>
+                  <td><%= group.week %></td>
+                  <td><%= group.time %></td>
+                  <td class="options-width">
+                    <%= link_to 'Show', group %>
+                    <%= link_to 'Edit', edit_group_path(group) %>
+                    <%= link_to 'Classes', group_lab_classes_path(group) %>
+                    <%= link_to 'Students', group_students_path(group) %>
+                    <%= link_to 'Presence', group_group_presences_path(group) %>
+                    <%= link_to 'Destroy', group, method: :delete, data: {confirm: 'Are you sure?'} %>
+                    <br/>
+                    <%= link_to 'Final Marks', group_group_final_marks_path(group) %>
+                    <%= link_to 'Give Final Marks', group_group_give_marks_path(group) %>
+
+                  </td>
+                </tr>
+            <% end %>
+
+          </table>
+          <!--  end product-table................................... -->
+        </div>
+        <!--  end content-table  -->
+
+
+        <div class="clear"></div>
+
+      </div>
+      <!--  end content-table-inner ............................................END  -->
+    </td>
+    <td id="tbl-border-right"></td>
+  </tr>
+  <tr>
+    <th class="sized bottomleft"></th>
+    <td id="tbl-border-bottom">&nbsp;</td>
+    <th class="sized bottomright"></th>
+  </tr>
+</table>
+<div class="clear">&nbsp;</div>

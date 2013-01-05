@@ -1,62 +1,62 @@
 <% provide(:title, 'Sign Up') %>
-	<!-- start logo -->
+<!-- start logo -->
 
-	<!-- end logo -->
-	
-	<div class="clear"></div>
-			<%= form_for @user do |f| %>
-		<% if @user.errors.any? %>
-	
-			<!--  start message-red -->
-			<div id="message">
-			<% @user.errors.full_messages.each do |msg| %>
-			<div id="message-error"><%= msg %></div>
+<!-- end logo -->
 
-			<% end %>
-			</div>
-			<!--  end message-red -->
-	
-		<% end %>
-	<!--  start loginbox ................................................................................. -->
-	<div id="signinbox">
+<div class="clear"></div>
+<%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
 
-	<!--  start login-inner -->
-	<div id="login-inner">
-		<div id="login-text"><%= yield(:title) %></div>
+        <!--  start message-red -->
+        <div id="message">
+          <% @user.errors.full_messages.each do |msg| %>
+              <div id="message-error"><%= msg %></div>
 
-		<table border="0" cellpadding="0" cellspacing="0">
-		<tr>
-			<th><%= f.label :title %></th>
-			<td><%= f.text_field :title, class: "login-inp" %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :name %></th>
-			<td><%= f.text_field :name, class: "login-inp" %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :surname %></th>
-			<td><%= f.text_field :surname, class: "login-inp" %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :email %></th>
-			<td><%= f.text_field :email, class: "login-inp" %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :password %></th>
-			<td><%= f.password_field :password, class: "login-inp" %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :password_confirmation %></th>
-			<td><%= f.password_field :password_confirmation, class: "login-inp" %></td>
-		</tr>
-		<tr>
-			<th></th>
-			<td><%= f.submit "Sign Up", class: "submit-login"  %></td>
-		</tr>
-		</table>
-		<% end %>
-	</div>
- 	<!--  end login-inner -->
-	<div class="clear"></div>
- </div>
- <!--  end loginbox -->
+          <% end %>
+        </div>
+        <!--  end message-red -->
+
+    <% end %>
+    <!--  start loginbox ................................................................................. -->
+    <div id="signinbox">
+
+      <!--  start login-inner -->
+      <div id="login-inner">
+        <div id="login-text"><%= yield(:title) %></div>
+
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <th><%= f.label :title %></th>
+            <td><%= f.text_field :title, class: "login-inp" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name %></th>
+            <td><%= f.text_field :name, class: "login-inp" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :surname %></th>
+            <td><%= f.text_field :surname, class: "login-inp" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email %></th>
+            <td><%= f.text_field :email, class: "login-inp" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :password %></th>
+            <td><%= f.password_field :password, class: "login-inp" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :password_confirmation %></th>
+            <td><%= f.password_field :password_confirmation, class: "login-inp" %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "Sign Up", class: "submit-login" %></td>
+          </tr>
+        </table>
+<% end %>
+</div>
+<!--  end login-inner -->
+<div class="clear"></div>
+</div>
+<!--  end loginbox -->

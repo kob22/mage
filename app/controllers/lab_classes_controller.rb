@@ -2,12 +2,12 @@ class LabClassesController < ApplicationController
   # GET /lab_classes
   # GET /lab_classes.json
   def index
-   if params[:group_id]==nil
-   @lab_classes = LabClass.all
-   else
-    @group = Group.find(params[:group_id])
-    @lab_classes = @group.lab_classes.all
-   end
+    if params[:group_id]==nil
+      @lab_classes = LabClass.all
+    else
+      @group = Group.find(params[:group_id])
+      @lab_classes = @group.lab_classes.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lab_classes }

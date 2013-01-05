@@ -43,8 +43,8 @@ end
 
 Then /^I shouldn't see this student on the list$/ do
   @students.each do |student|
-  
-  page.should_not have_content student.name
-  page.should_not have_content student.surname
+
+    page.should_not have_content student.name
+    page.should_not have_content student.surname
   end
 end

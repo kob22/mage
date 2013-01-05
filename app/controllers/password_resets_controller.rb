@@ -1,11 +1,12 @@
 class PasswordResetsController < ApplicationController
   skip_before_filter :authorize
   layout "sessions"
+
   def new
 
-  if current_user 
-  redirect_to root_path, :notice => "You are log in"
-  end
+    if current_user
+      redirect_to root_path, :notice => "You are log in"
+    end
 
   end
 
@@ -19,8 +20,8 @@ class PasswordResetsController < ApplicationController
   def edit
     @user = User.find_by_password_reset_token!(params[:id])
 
-	rescue ActiveRecord::RecordNotFound => error 
-      redirect_to new_password_reset_path, :alert => "Please generate reset link again"
+  rescue ActiveRecord::RecordNotFound => error
+    redirect_to new_password_reset_path, :alert => "Please generate reset link again"
   end
 
 
@@ -30,11 +31,11 @@ class PasswordResetsController < ApplicationController
       redirect_to new_password_reset_path, :alert => "Password reset link has expired."
     end
 
-      if @user.update_attributes(params[:user])
-	redirect_to login_path, :notice => "Password has been reset."
-      else
-        render :edit
-      end
+    if @user.update_attributes(params[:user])
+      redirect_to login_path, :notice => "Password has been reset."
+    else
+      render :edit
+    end
 
 
   end

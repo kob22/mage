@@ -2,7 +2,7 @@ Given /^I added group and students$/ do
   @group=FactoryGirl.create(:group)
   @students= Array.new
   20.times do |n|
-	 @students[n]=FactoryGirl.create(:student, name: Faker::Name.first_name , surname: Faker::Name.last_name, group: @group)
+    @students[n]=FactoryGirl.create(:student, name: Faker::Name.first_name, surname: Faker::Name.last_name, group: @group)
   end
 end
 
@@ -68,7 +68,7 @@ end
 Given /^I added a few classes$/ do
   @labclasses= Array.new
   5.times do |n|
-	 @labclasses[n] = FactoryGirl.create(:lab_class, subject: "Lesson number #{n}", group: @group)
+    @labclasses[n] = FactoryGirl.create(:lab_class, subject: "Lesson number #{n}", group: @group)
   end
 end
 

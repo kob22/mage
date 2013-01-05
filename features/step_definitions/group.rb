@@ -13,7 +13,7 @@ end
 
 When /^I add group$/ do
 
-  add_group("First","Friday","AB","17:00")
+  add_group("First", "Friday", "AB", "17:00")
 
 end
 
@@ -27,15 +27,14 @@ Then /^I see this group on the list$/ do
 end
 
 
-
 When /^I add group without data$/ do
 
-  add_group("","","","")
+  add_group("", "", "", "")
 
 end
 
 When /^I should see a error message, that fileds can't be blank$/ do
-  
+
   page.should have_content "Group can't be blank"
   page.should have_content "Day can't be blank"
   page.should have_content "Week can't be blank"
@@ -87,9 +86,9 @@ When /^I delete group$/ do
   page.should have_content @group.group
   click_link "Students"
   @students.each do |student|
-  
-  page.should have_content student.name
-  page.should have_content student.surname
+
+    page.should have_content student.name
+    page.should have_content student.surname
   end
   visit groups_path
   click_link "Destroy"
@@ -105,9 +104,9 @@ Then /^I shouldn't see students who belongs to this group$/ do
   page.should_not have_content @group.group
   visit students_path
   @students.each do |student|
-  
-  page.should_not have_content student.name
-  page.should_not have_content student.surname
+
+    page.should_not have_content student.name
+    page.should_not have_content student.surname
   end
 end
 

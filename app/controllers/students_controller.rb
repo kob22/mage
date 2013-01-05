@@ -1,12 +1,12 @@
 class StudentsController < ApplicationController
 
   def index
-   if params[:group_id]==nil
-   @students = Student.all
-   else
-    @group = Group.find(params[:group_id])
-    @students = @group.students.all
-   end
+    if params[:group_id]==nil
+      @students = Student.all
+    else
+      @group = Group.find(params[:group_id])
+      @students = @group.students.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @students }
@@ -41,19 +41,19 @@ class StudentsController < ApplicationController
     @group = Group.find(params[:group_id])
     saved, missed = @group.students.create_from_text(params[:list_of_student])
     if saved>0
-     if missed == 0
-     @notice = "Added #{saved} students"
-     else 
-     @notice = "Added #{saved} students, #{missed} lines were ignored"
-     end
-     respond_to do |format|
-       format.html { redirect_to group_students_path(params[:group_id]), notice: @notice }
-       format.json { render json: group_students_path(params[:group_id]), status: :created, location: group_students_path(params[:group_id]) }
-     end
+      if missed == 0
+        @notice = "Added #{saved} students"
+      else
+        @notice = "Added #{saved} students, #{missed} lines were ignored"
+      end
+      respond_to do |format|
+        format.html { redirect_to group_students_path(params[:group_id]), notice: @notice }
+        format.json { render json: group_students_path(params[:group_id]), status: :created, location: group_students_path(params[:group_id]) }
+      end
 
     else
-	flash[:notice] = 'Did not add students'        
-	render action: "new"
+      flash[:notice] = 'Did not add students'
+      render action: "new"
 
     end
   end

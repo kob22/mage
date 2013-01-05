@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-skip_before_filter :authorize
+  skip_before_filter :authorize
   layout "sessions"
+
   def new
     @user = User.new
   end

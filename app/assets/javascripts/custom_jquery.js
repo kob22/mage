@@ -22,19 +22,19 @@ $(document).ready(function () {
 
 // 3 - MESSAGE BOX FADING SCRIPTS ---------------------------------------------------------------------
 
-$(document).ready(function() {
-	$(".close-yellow").click(function () {
-		$("#message-yellow").fadeOut("slow");
-	});
-	$(".close-red").click(function () {
-		$("#message-red").fadeOut("slow");
-	});
-	$(".close-blue").click(function () {
-		$("#message-blue").fadeOut("slow");
-	});
-	$(".close-green").click(function () {
-		$("#message-green").fadeOut("slow");
-	});
+$(document).ready(function () {
+    $(".close-yellow").click(function () {
+        $("#message-yellow").fadeOut("slow");
+    });
+    $(".close-red").click(function () {
+        $("#message-red").fadeOut("slow");
+    });
+    $(".close-blue").click(function () {
+        $("#message-blue").fadeOut("slow");
+    });
+    $(".close-green").click(function () {
+        $("#message-green").fadeOut("slow");
+    });
 });
 
 // END ----------------------------- 3
@@ -51,27 +51,27 @@ $(document).bind("click", function (e) {
     if (e.target.id != $(".action-slider").attr("class")) $("#actions-box-slider").slideUp();
 });
 // END ----------------------------- 4
- 
- 
- 
+
+
+
 // 5 - TABLE ROW BACKGROUND COLOR CHANGES ON ROLLOVER -----------------------------------------------------------------------
 /*
-$(document).ready(function () {
-    $('#product-table	tr').hover(function () {
-        $(this).addClass('activity-blue');
-    },
-    function () {
-        $(this).removeClass('activity-blue');
-    });
-});
+ $(document).ready(function () {
+ $('#product-table	tr').hover(function () {
+ $(this).addClass('activity-blue');
+ },
+ function () {
+ $(this).removeClass('activity-blue');
+ });
+ });
  */
 // END -----------------------------  5
- 
- 
- 
- // 6 - DYNAMIC YEAR STAMP FOR FOOTER -----------------------------------------------------------------------
 
- $('#spanYear').html(new Date().getFullYear()); 
- 
+
+
+// 6 - DYNAMIC YEAR STAMP FOR FOOTER -----------------------------------------------------------------------
+
+$('#spanYear').html(new Date().getFullYear());
+
 // END -----------------------------  6 
   

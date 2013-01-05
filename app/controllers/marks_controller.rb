@@ -1,14 +1,14 @@
 class MarksController < ApplicationController
 
   def index
-   
-   if params[:student_id]==nil || params[:lab_class_id]==nil
-   @marks = Mark.all
-   else
-    @student = Student.find(params[:student_id])
-    @lab_class = LabClass.find(params[:lab_class_id])
-    @marks=Mark.find_all_by_lab_class_id_and_student_id(@lab_class.id,@student.id)
-   end
+
+    if params[:student_id]==nil || params[:lab_class_id]==nil
+      @marks = Mark.all
+    else
+      @student = Student.find(params[:student_id])
+      @lab_class = LabClass.find(params[:lab_class_id])
+      @marks=Mark.find_all_by_lab_class_id_and_student_id(@lab_class.id, @student.id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb

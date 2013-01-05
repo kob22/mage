@@ -2,13 +2,13 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-   
-   if params[:subject_id]==nil
-   @groups = Group.all
-   else
-    @subject = Subject.find(params[:subject_id])
-    @groups = @subject.groups.all
-   end
+
+    if params[:subject_id]==nil
+      @groups = Group.all
+    else
+      @subject = Subject.find(params[:subject_id])
+      @groups = @subject.groups.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
