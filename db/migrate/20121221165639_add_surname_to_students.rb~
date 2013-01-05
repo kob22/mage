@@ -1,4 +1,0 @@
-class AddSurnameToStudents < ActiveRecord::Migration
-  def change
-  end
-end

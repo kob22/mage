@@ -1,4 +1,0 @@
-<div id="page-heading"><h1>New lab_class</h1></div>
-
-<%= render 'form' %>
-

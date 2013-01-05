@@ -1,4 +1,0 @@
-class AddIndexToStudents < ActiveRecord::Migration
-  def change
-  end
-end

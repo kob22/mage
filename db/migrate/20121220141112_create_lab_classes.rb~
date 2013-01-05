@@ -4,7 +4,7 @@ class CreateLabClasses < ActiveRecord::Migration
       t.string :subject
       t.datetime :date
       t.string :mark
-      t.text :note
+      t.string :note
       t.string :group_id
 
       t.timestamps
