@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
     if params[:subject_id]==nil
       @groups = Group.all
     else
-      @subject = Subject.find(params[:subject_id])
+      @subject = current_background
       @groups = @subject.groups.all
     end
 
@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
+    @group = current_resource
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   # GET /groups/new.json
   def new
-    @subject = Subject.find(params[:subject_id])
+    @subject = current_background
     @group = @subject.groups.new
 
     respond_to do |format|
@@ -41,13 +41,13 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find(params[:id])
+    @group = current_resource
   end
 
   # POST /groups
   # POST /groups.json
   def create
-    @subject = Subject.find(params[:subject_id])
+    @subject = current_background
     @group = @subject.groups.new(params[:group])
 
     respond_to do |format|
@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @group = Group.find(params[:id])
+    @group = current_resource
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
@@ -80,7 +80,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group = Group.find(params[:id])
+    @group = current_resource
     @group.destroy
 
     respond_to do |format|
@@ -88,4 +88,21 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+
+  def current_resource
+    if params[:action].in?(%w[new create])
+    @current_resource = current_background
+    else
+    @current_resource ||= Group.find(params[:id]) if params[:id]
+    end
+
+  end
+
+  def current_background
+    @current_background ||= Subject.find(params[:subject_id]) if params[:subject_id]
+  end
+
 end

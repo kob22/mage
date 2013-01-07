@@ -8,4 +8,9 @@ class Note < ActiveRecord::Base
   validates :lab_class_id, presence: true
   validates :note, presence: true
   validates :student_id, presence: true
+
+  def owner
+    return self.student.group.subject.user_id
+  end
+
 end

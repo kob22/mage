@@ -2,7 +2,7 @@ class FmarksController < ApplicationController
   before_filter :create_mark, only: :give_mark
 
   def index
-    @group = Group.find(params[:group_id])
+    @group = current_resource
     @students = @group.students.all
     @fmarks = Array.new()
     @students.each do |student|
@@ -13,7 +13,7 @@ class FmarksController < ApplicationController
 
   def give_mark
 
-    @group = Group.find(params[:group_id])
+    @group = current_resource
     @students = @group.students.all
     @fmarks = Array.new()
     @students.each do |student|
@@ -42,6 +42,11 @@ class FmarksController < ApplicationController
 
   def create_mark
     Fmark.create_mark(params[:group_id])
+  end
+  def current_resource
+
+      @current_resource ||= Group.find(params[:group_id]) if params[:group_id]
+
   end
 
 

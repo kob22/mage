@@ -9,5 +9,7 @@ class LabClass < ActiveRecord::Base
   validates :subject, presence: true
   validates :date, presence: true
 
-
+  def owner
+    return self.group.subject.user_id
+  end
 end

@@ -9,4 +9,9 @@ class Mark < ActiveRecord::Base
   validates :student_id, presence: true
   validates :mark, presence: true
 
+
+  def owner
+    return self.student.group.subject.user_id
+  end
+
 end

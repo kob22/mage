@@ -2,6 +2,7 @@ require 'factory_girl'
 
 FactoryGirl.define do
 
+
   factory :user do
     title "mgr"
     name "Jan"
@@ -22,6 +23,7 @@ FactoryGirl.define do
 
   factory :subject do
     subject "Science"
+    user_id 1
   end
 
   factory :student do

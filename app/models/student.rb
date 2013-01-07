@@ -21,6 +21,12 @@ class Student < ActiveRecord::Base
     [txts.count(true), txts.count(false)]
   end
 
+
+  def owner
+    return self.group.subject.user_id
+  end
+
+
 end
 
 

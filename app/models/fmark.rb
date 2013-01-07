@@ -17,5 +17,8 @@ class Fmark < ActiveRecord::Base
     end
   end
 
+  def owner
+    return self.student.group.subject.user_id
+  end
 
 end

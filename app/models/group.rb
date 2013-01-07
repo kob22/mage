@@ -10,5 +10,9 @@ class Group < ActiveRecord::Base
   validates :week, presence: true
   validates :time, presence: true
 
+  def owner
+    return self.subject.user_id
+  end
+
 
 end

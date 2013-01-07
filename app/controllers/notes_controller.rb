@@ -3,7 +3,7 @@ class NotesController < ApplicationController
   # GET /notes/new
   # GET /notes/new.json
   def new
-    @student = Student.find(params[:student_id])
+    @student = current_background
     @lab_class = LabClass.find(params[:lab_class_id])
     @note = Note.new(lab_class_id: @lab_class.id, student_id: @student.id)
 
@@ -14,7 +14,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @student = Student.find(params[:student_id])
+    @student = current_background
     @lab_class = LabClass.find(params[:lab_class_id])
     @note = Note.new(params[:note])
 
@@ -30,11 +30,11 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note = Note.find(params[:id])
+    @note = current_resource
   end
 
   def update
-    @note = Note.find(params[:id])
+    @note = current_resource
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
@@ -48,13 +48,27 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    @note = Note.find(params[:id])
+    @note = current_resource
     @note.destroy
 
     respond_to do |format|
       format.html { redirect_to lab_class_path(@note.lab_class), notice: 'Note was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def current_resource
+
+    if params[:action].in?(%w[new create])
+      @current_resource = current_background
+    else
+      @current_resource ||= Note.find(params[:id]) if params[:id]
+    end
+
+  end
+
+  def current_background
+    @current_background ||= Student.find(params[:student_id]) if params[:student_id]
   end
 
 end

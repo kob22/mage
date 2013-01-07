@@ -13,7 +13,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
-    @subject = Subject.find(params[:id])
+    @subject = current_resource
     @groups = @subject.groups.all
     respond_to do |format|
       format.html # show.html.erb
@@ -34,14 +34,14 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
-    @subject = Subject.find(params[:id])
+    @subject = current_resource
   end
 
   # POST /subjects
   # POST /subjects.json
   def create
     @subject = Subject.new(params[:subject])
-
+    @subject.user_id = @current_user.id
     respond_to do |format|
       if @subject.save
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
@@ -56,7 +56,7 @@ class SubjectsController < ApplicationController
   # PUT /subjects/1
   # PUT /subjects/1.json
   def update
-    @subject = Subject.find(params[:id])
+    @subject = current_resource
 
     respond_to do |format|
       if @subject.update_attributes(params[:subject])
@@ -72,12 +72,18 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    @subject = Subject.find(params[:id])
+    @subject = current_resource
     @subject.destroy
 
     respond_to do |format|
       format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def current_resource
+    @current_resource ||= Subject.find(params[:id]) if params[:id]
   end
 end

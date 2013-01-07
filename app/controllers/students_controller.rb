@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
     if params[:group_id]==nil
       @students = Student.all
     else
-      @group = Group.find(params[:group_id])
+      @group = current_background
       @students = @group.students.all
     end
     respond_to do |format|
@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
 
 
   def show
-    @student = Student.find(params[:id])
+    @student = current_resource
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class StudentsController < ApplicationController
   end
 
   def new
-
+    @group = current_background
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @student }
@@ -33,12 +33,12 @@ class StudentsController < ApplicationController
 
 
   def edit
-    @student = Student.find(params[:id])
+    @student = current_resource
   end
 
 
   def create
-    @group = Group.find(params[:group_id])
+    @group = current_background
     saved, missed = @group.students.create_from_text(params[:list_of_student])
     if saved>0
       if missed == 0
@@ -59,7 +59,7 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = Student.find(params[:id])
+    @student = current_resource
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
@@ -74,13 +74,27 @@ class StudentsController < ApplicationController
 
 
   def destroy
-    @student = Student.find(params[:id])
+    @student = current_resource
     @student.destroy
 
     respond_to do |format|
       format.html { redirect_to group_students_path(@student.group_id), notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+  def current_resource
+
+    if params[:action].in?(%w[new create])
+      @current_resource = current_background
+    else
+      @current_resource ||= Student.find(params[:id]) if params[:id]
+    end
+  end
+
+  def current_background
+    @current_background ||= Group.find(params[:group_id]) if params[:group_id]
   end
 
 end

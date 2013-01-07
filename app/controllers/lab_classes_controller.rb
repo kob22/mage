@@ -5,7 +5,7 @@ class LabClassesController < ApplicationController
     if params[:group_id]==nil
       @lab_classes = LabClass.all
     else
-      @group = Group.find(params[:group_id])
+      @group = current_background
       @lab_classes = @group.lab_classes.all
     end
     respond_to do |format|
@@ -29,21 +29,21 @@ class LabClassesController < ApplicationController
   # GET /lab_classes/new.json
   def new
 
-    @group = Group.find(params[:group_id])
+    @group = current_background
     @lab_class = @group.lab_classes.new
 
   end
 
   # GET /lab_classes/1/edit
   def edit
-    @lab_class = LabClass.find(params[:id])
+    @lab_class = current_resource
   end
 
   # POST /lab_classes
   # POST /lab_classes.json
   def create
 
-    @group = Group.find(params[:group_id])
+    @group = current_background
     @lab_class = @group.lab_classes.new(params[:lab_class])
 
     respond_to do |format|
@@ -63,7 +63,7 @@ class LabClassesController < ApplicationController
   # PUT /lab_classes/1
   # PUT /lab_classes/1.json
   def update
-    @lab_class = LabClass.find(params[:id])
+    @lab_class = current_resource
 
     respond_to do |format|
       if @lab_class.update_attributes(params[:lab_class])
@@ -79,12 +79,29 @@ class LabClassesController < ApplicationController
   # DELETE /lab_classes/1
   # DELETE /lab_classes/1.json
   def destroy
-    @lab_class = LabClass.find(params[:id])
+    @lab_class = current_resource
     @lab_class.destroy
 
     respond_to do |format|
       format.html { redirect_to lab_classes_url }
       format.json { head :no_content }
     end
+  end
+
+
+  private
+
+  def current_resource
+
+    if params[:action].in?(%w[new create])
+      @current_resource = current_background
+    else
+      @current_resource ||= LabClass.find(params[:id]) if params[:id]
+    end
+
+  end
+
+  def current_background
+    @current_background ||= Group.find(params[:group_id]) if params[:group_id]
   end
 end
