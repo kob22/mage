@@ -6,7 +6,9 @@ class FmarksController < ApplicationController
     @students = @group.students.all
     @fmarks = Array.new()
     @students.each do |student|
-      @fmarks << Fmark.find_by_student_id(student.id)
+      if temp =Fmark.find_by_student_id(student.id)
+      @fmarks << temp
+      end
     end
   end
 

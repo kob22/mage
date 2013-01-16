@@ -10,6 +10,7 @@ FactoryGirl.define do
     email "kob2222@gmail.com"
     password "apka123"
     password_confirmation "apka123"
+    admin false
   end
 
   factory :blank_user, class: User do

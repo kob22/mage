@@ -9,15 +9,14 @@ class Permission
       allow :subjects, [:show,:edit, :update, :destroy] do |subject|
         subject.owner == user.id
       end
-      allow :groups, [:index]
-      allow :groups, [:new, :create] do |subject|
+      allow :groups, [:index_all]
+      allow :groups, [:index,:new, :create] do |subject|
         subject.owner == user.id
       end
       allow :groups, [:show,:edit, :update, :destroy] do |group|
         group.owner == user.id
       end
-      allow :lab_classes, [:index]
-      allow :lab_classes, [:new, :create] do |group|
+      allow :lab_classes, [:index, :new, :create] do |group|
         group.owner == user.id
       end
       allow :lab_classes, [:show,:edit, :update, :destroy] do |lab_class|
@@ -29,8 +28,8 @@ class Permission
       allow :presences, [:group_presence] do |group|
         group.owner == user.id
       end
-      allow :students, [:index]
-      allow :students, [:new, :create] do |group|
+      allow :students, [:index_all]
+      allow :students, [:index, :new, :create] do |group|
         group.owner == user.id
       end
       allow :students, [:show,:edit, :update, :destroy] do |student|
@@ -55,6 +54,7 @@ class Permission
       allow :fmarks, [:index, :give_mark, :update_mark] do |group|
         group.owner == user.id
       end
+
     end
   end
 

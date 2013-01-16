@@ -1,18 +1,18 @@
 Mag::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
 
   root :to => "static_pages#home"
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'groups', to: 'groups#index_all', as: 'groups'
+  get 'students', to: 'students#index_all', as: 'students'
 
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :groups, only: [:index]
-  resources :students, only: [:index]
-  resources :lab_classes, only: [:index]
   resources :notes, only: [:new, :create, :edit, :update, :destroy]
   resources :marks, only: [:new, :create, :edit, :update, :destroy, :index]
   resources :subjects, shallow: true do

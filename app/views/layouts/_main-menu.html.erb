@@ -59,7 +59,7 @@
                 <div class="select_sub">
         <% end %>
         <ul class="sub">
-          <%= active_li('groups', 'index', 'All Groups', groups_path) %>
+          <%= active_li('groups', 'index_all', 'All Groups', groups_path) %>
 
         </ul>
         </div>
@@ -79,12 +79,23 @@
                 <div class="select_sub">
         <% end %>
         <ul class="sub">
-          <%= active_li('students', 'index', 'All Students', students_path) %>
+          <%= active_li('students', 'index_all', 'All Students', students_path) %>
         </ul>
         </div>
         </li>
         </ul>
 
+        <div class="nav-divider">&nbsp;</div>
+
+
+        <% if current_user.admin? %>
+            <ul class="select">
+              <li><%= link_to "<b>Admin</b>".html_safe, '/admin' %>
+                <div class="select_sub">
+        <% end %>
+        </div>
+        </li>
+        </ul>
 
         <div class="clear"></div>
         </div>

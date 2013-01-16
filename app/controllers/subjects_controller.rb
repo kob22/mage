@@ -2,7 +2,8 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.all
+
+    @subjects = @current_user.subjects.all
 
     respond_to do |format|
       format.html # index.html.erb

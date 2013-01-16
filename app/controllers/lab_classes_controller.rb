@@ -2,12 +2,9 @@ class LabClassesController < ApplicationController
   # GET /lab_classes
   # GET /lab_classes.json
   def index
-    if params[:group_id]==nil
-      @lab_classes = LabClass.all
-    else
       @group = current_background
       @lab_classes = @group.lab_classes.all
-    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lab_classes }
@@ -92,11 +89,12 @@ class LabClassesController < ApplicationController
   private
 
   def current_resource
-
     if params[:action].in?(%w[new create])
-      @current_resource = current_background
+    @current_resource = current_background
+    elsif params[:action].in?(%w[index]) && params[:group_id]
+    @current_resource = current_background
     else
-      @current_resource ||= LabClass.find(params[:id]) if params[:id]
+    @current_resource ||= LabClass.find(params[:id]) if params[:id]
     end
 
   end

@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107115557) do
+ActiveRecord::Schema.define(:version => 20130116190737) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "fmarks", :force => true do |t|
     t.integer  "student_id"
@@ -34,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130107115557) do
   create_table "lab_classes", :force => true do |t|
     t.string   "subject"
     t.datetime "date"
-    t.string   "note"
+    t.text     "note"
     t.string   "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -53,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20130107115557) do
   create_table "notes", :force => true do |t|
     t.integer  "student_id"
     t.integer  "lab_class_id"
-    t.string   "note"
+    t.text     "note"
     t.date     "date"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
@@ -90,11 +105,12 @@ ActiveRecord::Schema.define(:version => 20130107115557) do
     t.string   "surname"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

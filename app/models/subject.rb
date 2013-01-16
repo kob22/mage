@@ -1,6 +1,6 @@
 class Subject < ActiveRecord::Base
   attr_accessible :subject
-
+  belongs_to :user
   has_many :groups, :dependent => :destroy
 
   validates :subject, presence: true

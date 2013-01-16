@@ -1,14 +1,27 @@
 class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
+
+  def index_all
+
+      @subjects = @current_user.subjects.all
+      @groups = Array.new()
+      @subjects.each do |subject| 
+	if @temp =subject.groups.all
+ 		@temp.each do |group|
+		@groups << group
+		end 
+      	end
+    end
+
+
+render 'index'
+  end
+
   def index
 
-    if params[:subject_id]==nil
-      @groups = Group.all
-    else
       @subject = current_background
       @groups = @subject.groups.all
-    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -94,6 +107,8 @@ class GroupsController < ApplicationController
 
   def current_resource
     if params[:action].in?(%w[new create])
+    @current_resource = current_background
+    elsif params[:action].in?(%w[index]) && params[:subject_id]
     @current_resource = current_background
     else
     @current_resource ||= Group.find(params[:id]) if params[:id]
