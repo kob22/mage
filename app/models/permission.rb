@@ -5,21 +5,21 @@ class Permission
     allow :password_resets, [:new, :create, :edit, :update]
     if user
       allow :static_pages, [:home]
-      allow :subjects, [:index,:new, :create]
-      allow :subjects, [:show,:edit, :update, :destroy] do |subject|
+      allow :subjects, [:index, :new, :create]
+      allow :subjects, [:show, :edit, :update, :destroy] do |subject|
         subject.owner == user.id
       end
       allow :groups, [:index_all]
-      allow :groups, [:index,:new, :create] do |subject|
+      allow :groups, [:index, :new, :create] do |subject|
         subject.owner == user.id
       end
-      allow :groups, [:show,:edit, :update, :destroy] do |group|
+      allow :groups, [:show, :edit, :update, :destroy] do |group|
         group.owner == user.id
       end
       allow :lab_classes, [:index, :new, :create] do |group|
         group.owner == user.id
       end
-      allow :lab_classes, [:show,:edit, :update, :destroy] do |lab_class|
+      allow :lab_classes, [:show, :edit, :update, :destroy] do |lab_class|
         lab_class.owner == user.id
       end
       allow :presences, [:index, :check_presence, :update_presence] do |lab_class|
@@ -32,7 +32,7 @@ class Permission
       allow :students, [:index, :new, :create] do |group|
         group.owner == user.id
       end
-      allow :students, [:show,:edit, :update, :destroy] do |student|
+      allow :students, [:show, :edit, :update, :destroy] do |student|
         student.owner == user.id
       end
 

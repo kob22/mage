@@ -30,7 +30,7 @@ Then /^I should see message that name can't be blank$/ do
 end
 
 When /^I edit subject$/ do
-  @subject=FactoryGirl.create(:subject)
+  @subject=FactoryGirl.create(:subject, user: @user)
   visit subjects_path
   click_link "Edit"
   fill_in "subject_subject", with: "New Science"
@@ -47,7 +47,8 @@ Then /^I see edited subject on the list$/ do
 end
 
 When /^I delete subject$/ do
-  @group=FactoryGirl.create(:group)
+  @subject=FactoryGirl.create(:subject, user: @user)
+  @group=FactoryGirl.create(:group, subject: @subject)
   visit subjects_path
   page.should have_content @group.subject.subject
 
@@ -68,5 +69,5 @@ Then /^I shouldn't see groups who belongs to this subject$/ do
 end
 
 Given /^I added subject$/ do
-  @subject=FactoryGirl.create(:subject)
+  @subject=FactoryGirl.create(:subject, user: @user)
 end

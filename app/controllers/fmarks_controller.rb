@@ -7,7 +7,7 @@ class FmarksController < ApplicationController
     @fmarks = Array.new()
     @students.each do |student|
       if temp =Fmark.find_by_student_id(student.id)
-      @fmarks << temp
+        @fmarks << temp
       end
     end
   end
@@ -45,9 +45,10 @@ class FmarksController < ApplicationController
   def create_mark
     Fmark.create_mark(params[:group_id])
   end
+
   def current_resource
 
-      @current_resource ||= Group.find(params[:group_id]) if params[:group_id]
+    @current_resource ||= Group.find(params[:group_id]) if params[:group_id]
 
   end
 

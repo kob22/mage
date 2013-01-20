@@ -1,7 +1,7 @@
 def add_group(group_name, group_day, group_week, group_time)
   visit subjects_path
   click_link "Groups"
-  click_link "New"
+  click_link "New Group"
   fill_in "group_group", with: group_name
   fill_in "group_day", with: group_day
   fill_in "group_week", with: group_week
@@ -33,7 +33,7 @@ When /^I add group without data$/ do
 
 end
 
-When /^I should see a error message, that fileds can't be blank$/ do
+When /^I should see a error message, that fields can't be blank$/ do
 
   page.should have_content "Group can't be blank"
   page.should have_content "Day can't be blank"
@@ -80,13 +80,13 @@ Then /^I should see this edited group with valid data on the list$/ do
 end
 
 When /^I delete group$/ do
-  @group=FactoryGirl.create(:group)
+  @subject=FactoryGirl.create(:subject, user: @user)
+  @group=FactoryGirl.create(:group, subject: @subject)
   @students = FactoryGirl.create_list(:student, 10, group: @group)
   visit groups_path
   page.should have_content @group.group
   click_link "Students"
   @students.each do |student|
-
     page.should have_content student.name
     page.should have_content student.surname
   end
@@ -111,7 +111,8 @@ Then /^I shouldn't see students who belongs to this group$/ do
 end
 
 Given /^I added group$/ do
-  @group=FactoryGirl.create(:group)
+  @subject=FactoryGirl.create(:subject, user: @user)
+  @group=FactoryGirl.create(:group, subject: @subject)
 end
 
 

@@ -44,7 +44,7 @@
                         <td><%= link_to group.group, group %></td>
                         <td><%= group.day %></td>
                         <td><%= group.week %></td>
-                        <td><%= group.time %></td>
+                        <td><%= formated_time(group.time) %></td>
                         <td class="options-width">
                           <%= link_to 'Show', group %>
                           <%= link_to 'Edit', edit_group_path(group) %>

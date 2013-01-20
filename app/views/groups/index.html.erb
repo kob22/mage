@@ -3,7 +3,7 @@
 <div id="page-heading">
   <h1>Listing groups</h1>
   <% unless params[:subject_id]==nil %>
-      <h1><%= link_to 'New', new_subject_group_path %></h1>
+      <h1><%= link_to 'New Group', new_subject_group_path %></h1>
   <% end %>
 </div>
 <!-- end page-heading -->
@@ -42,7 +42,7 @@
                   <td><%= group.group %></td>
                   <td><%= group.day %></td>
                   <td><%= group.week %></td>
-                  <td><%= group.time %></td>
+                  <td><%= formated_time(group.time) %></td>
                   <td class="options-width">
                     <%= link_to 'Show', group %>
                     <%= link_to 'Edit', edit_group_path(group) %>

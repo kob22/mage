@@ -24,7 +24,7 @@ FactoryGirl.define do
 
   factory :subject do
     subject "Science"
-    user_id 1
+    user
   end
 
   factory :student do

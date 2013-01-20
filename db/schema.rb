@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(:version => 20130116190737) do
 
   create_table "active_admin_comments", :force => true do |t|
-    t.string   "resource_id",   :null => false
-    t.string   "resource_type", :null => false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "namespace"
+    t.string "resource_id", :null => false
+    t.string "resource_type", :null => false
+    t.integer "author_id"
+    t.string "author_type"
+    t.text "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string "namespace"
   end
 
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
@@ -29,88 +29,88 @@ ActiveRecord::Schema.define(:version => 20130116190737) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "fmarks", :force => true do |t|
-    t.integer  "student_id"
-    t.string   "mark"
-    t.string   "note"
+    t.integer "student_id"
+    t.string "mark"
+    t.string "note"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "groups", :force => true do |t|
-    t.integer  "subject_id"
-    t.string   "group"
-    t.string   "day"
-    t.string   "week"
-    t.time     "time"
+    t.integer "subject_id"
+    t.string "group"
+    t.string "day"
+    t.string "week"
+    t.time "time"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "lab_classes", :force => true do |t|
-    t.string   "subject"
+    t.string "subject"
     t.datetime "date"
-    t.text     "note"
-    t.string   "group_id"
+    t.text "note"
+    t.string "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "marks", :force => true do |t|
-    t.integer  "lab_class_id"
-    t.integer  "student_id"
-    t.string   "mark"
+    t.integer "lab_class_id"
+    t.integer "student_id"
+    t.string "mark"
     t.datetime "date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "note"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string "note"
   end
 
   create_table "notes", :force => true do |t|
-    t.integer  "student_id"
-    t.integer  "lab_class_id"
-    t.text     "note"
-    t.date     "date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer "student_id"
+    t.integer "lab_class_id"
+    t.text "note"
+    t.date "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "presences", :force => true do |t|
-    t.integer  "student_id"
-    t.integer  "lab_class_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "presence"
+    t.integer "student_id"
+    t.integer "lab_class_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer "presence"
   end
 
   create_table "students", :force => true do |t|
-    t.string   "name"
-    t.integer  "group_id"
+    t.string "name"
+    t.integer "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "surname"
+    t.string "surname"
   end
 
   add_index "students", ["name", "surname"], :name => "index_students_on_name_and_surname"
 
   create_table "subjects", :force => true do |t|
-    t.string   "subject"
+    t.string "subject"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "title"
-    t.string   "name"
-    t.string   "surname"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
-    t.string   "auth_token"
-    t.string   "password_reset_token"
+    t.string "title"
+    t.string "name"
+    t.string "surname"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string "auth_token"
+    t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.boolean  "admin",                  :default => false
+    t.boolean "admin", :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

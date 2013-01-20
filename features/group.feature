@@ -1,8 +1,7 @@
 Feature: Group
-  In order to easily manage groups
+  In order to know when and with which group I have classes
   As a user
-  I want to add, edit, delete groups
-
+  I want to manage groups
 
   Background:
     Given I am logged in
@@ -13,11 +12,9 @@ Feature: Group
     Then I should see a successful group added message
     And I see this group on the list
 
-
   Scenario: User add group without data
     When I add group without data
-    Then I should see a error message, that fileds can't be blank
-
+    Then I should see a error message, that fields can't be blank
 
   Scenario: User edit group
     When I edit group

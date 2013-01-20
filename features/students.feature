@@ -1,7 +1,7 @@
 Feature: Students
-  In order to manage students
+  In order to know who students should attend classes
   As a user
-  I want to add, edit, delete students to group
+  I want to manage students in groups
 
   Background:
     Given I am logged in

@@ -1,5 +1,5 @@
 Feature: Presences
-  In order to check the presence of students
+  In order to know that students attend classes
   As a user
   I want to check the presence and see all students on the list
 

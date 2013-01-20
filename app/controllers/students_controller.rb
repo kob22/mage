@@ -1,28 +1,28 @@
 class StudentsController < ApplicationController
 
   def index_all
-      @subjects = @current_user.subjects.all
-      @students = Array.new()
-      @subjects.each do |subject| 
-	if @temp =subject.groups.all
- 		@temp.each do |group|
-		if @temp2 =group.students.all
- 			@temp2.each do |student|
-			@students << student
-		end
-	end 
-		end
-	end 
+    @subjects = @current_user.subjects.all
+    @students = Array.new()
+    @subjects.each do |subject|
+      if @temp =subject.groups.all
+        @temp.each do |group|
+          if @temp2 =group.students.all
+            @temp2.each do |student|
+              @students << student
+            end
+          end
+        end
       end
+    end
 
 
-render 'index'
+    render 'index'
   end
 
   def index
 
-      @group = current_background
-      @students = @group.students.all
+    @group = current_background
+    @students = @group.students.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -104,9 +104,9 @@ render 'index'
   def current_resource
 
     if params[:action].in?(%w[new create])
-    @current_resource = current_background
+      @current_resource = current_background
     elsif params[:action].in?(%w[index]) && params[:group_id]
-    @current_resource = current_background
+      @current_resource = current_background
     else
       @current_resource ||= Student.find(params[:id]) if params[:id]
     end

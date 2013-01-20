@@ -1,8 +1,7 @@
 Feature: Subject
-  In order to easily manage subject
+  In order to organize work
   As a user
-  I want to add, edit, delete subjects
-
+  I want to add, edit, delete my subjects
 
   Background:
     Given I am logged in
@@ -15,7 +14,6 @@ Feature: Subject
   Scenario: User add subject without name
     When I try add subject without name
     Then I should see message that name can't be blank
-
 
   Scenario: User edit subject
     When I edit subject

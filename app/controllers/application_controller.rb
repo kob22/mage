@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_admin_user
-	current_user  
+    current_user
     unless current_user.admin?
       flash[:alert] = "Unauthorized Access!"
-      redirect_to root_path 
+      redirect_to root_path
     end
   end
 
@@ -21,10 +21,11 @@ class ApplicationController < ActionController::Base
 
 
   def destroy_admin_user_session_path
-	logout_path
+    logout_path
   end
 
   helper_method :destroy_admin_user_session_path
+
   def authorize
     redirect_to login_url, alert: "Not authorized" if current_user.nil?
   end

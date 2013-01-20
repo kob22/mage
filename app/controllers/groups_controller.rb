@@ -4,24 +4,24 @@ class GroupsController < ApplicationController
 
   def index_all
 
-      @subjects = @current_user.subjects.all
-      @groups = Array.new()
-      @subjects.each do |subject| 
-	if @temp =subject.groups.all
- 		@temp.each do |group|
-		@groups << group
-		end 
-      	end
+    @subjects = @current_user.subjects.all
+    @groups = Array.new()
+    @subjects.each do |subject|
+      if @temp =subject.groups.all
+        @temp.each do |group|
+          @groups << group
+        end
+      end
     end
 
 
-render 'index'
+    render 'index'
   end
 
   def index
 
-      @subject = current_background
-      @groups = @subject.groups.all
+    @subject = current_background
+    @groups = @subject.groups.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -107,11 +107,11 @@ render 'index'
 
   def current_resource
     if params[:action].in?(%w[new create])
-    @current_resource = current_background
+      @current_resource = current_background
     elsif params[:action].in?(%w[index]) && params[:subject_id]
-    @current_resource = current_background
+      @current_resource = current_background
     else
-    @current_resource ||= Group.find(params[:id]) if params[:id]
+      @current_resource ||= Group.find(params[:id]) if params[:id]
     end
 
   end

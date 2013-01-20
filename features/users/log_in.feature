@@ -1,12 +1,11 @@
 Feature: Log in
-  In order to get access to the site
+  In order to get safely access to the site
   As a user
   I want to be able to log in
 
   Background:
     Given I signed up
     And I am not logged
-
 
   Scenario: User logs in successfully
     When I log in with valid credentials
@@ -31,14 +30,12 @@ Feature: Log in
     Then I return to the site
     And I should be still log in
 
-
   Scenario: User logs in successfully with uncheck remember me
     When I log in with valid credentials and uncheck box remember me
     Then I should see a successful log in message
     When I close the browser
     Then I return to the site
     And I should see log in page
-
 
   Scenario: User resets password
     When I request an email with password reset

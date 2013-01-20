@@ -1,5 +1,6 @@
 Given /^I added group and students$/ do
-  @group=FactoryGirl.create(:group)
+  @subject=FactoryGirl.create(:subject, user: @user)
+  @group=FactoryGirl.create(:group, subject: @subject)
   @students= Array.new
   20.times do |n|
     @students[n]=FactoryGirl.create(:student, name: Faker::Name.first_name, surname: Faker::Name.last_name, group: @group)

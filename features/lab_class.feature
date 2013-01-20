@@ -1,8 +1,7 @@
 Feature: Class
-  In order to manage lab class, add notes about class and students
+  In order to know when and what were about on classes
   As a user
-  I want to add class with date, add notes and check the presence
-
+  I want to manage classes
 
   Background:
     Given I am logged in
